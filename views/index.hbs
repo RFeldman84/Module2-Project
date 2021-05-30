@@ -1,0 +1,73 @@
+<hr>
+
+
+<center><img id="logoMain"  src="/images/yougleit.png" alt="logo"></center>
+
+
+
+{{#if userInSession}}
+<p>Welcome, {{ userInSession.username }}</p>
+<button><a href="/pick-new">ADD RESOURCE</a></button>
+
+    <br>
+    <br>
+    <button><a href="/languages">SEARCH BY <br>PROGRAMMING LANGUAGE</a></button>
+
+    <br>
+    <br>
+
+    <button><a href="/dev">SEARCH BY <br>PROGRAMMING/DEVELOPMENT</a></button>
+
+
+
+    {{else}}
+
+    {{!-- <p>No user in session currently!</p> --}}
+    <h2>Sign up</h2>
+
+    <form action="/signup" method="POST">
+
+        <label> Username:
+            <input type="text" name="username">
+        </label>
+        <label> Email:
+            <input type="email" name="email">
+        </label>
+        <label> Password:
+            <input type="password" name="userPassword">
+        </label>
+
+        <button type="submit">Sign up</button>
+
+        <br />
+        {{#if errorMessage}}
+        {{errorMessage}}
+        {{/if}}
+    </form>
+
+    <br>
+    <br>
+
+    <h1>OR</h1>
+
+    <h2>Login</h2>
+
+    <form action="/login" method="POST">
+
+        <label> Email:
+            <input type="email" name="email">
+        </label>
+        <label> Password:
+            <input type="password" name="userPassword">
+        </label>
+
+        <button type="submit">Login</button>
+
+        <br />
+        {{#if errorMessage}}
+        {{errorMessage}}
+        {{/if}}
+
+    </form>
+
+    {{/if}}

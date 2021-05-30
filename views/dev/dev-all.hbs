@@ -1,0 +1,135 @@
+<hr>
+<div>
+  <center><img class="align-center" width="45%" src="/images/yougleit.png" alt="logo"></center>
+  <h4 style="font-size: 1.7em" class="text-center"><b>Programming&Development</b></h4>
+
+
+  <form action="/dev" method="GET" class="form-inline row justify-content-center">
+    <div class="form-group">
+      <input type="text" name="search" placeholder="Search Resources..." class=" form-control-lg">
+      <button type="submit" class="btn-lg btn-primary ">yoooogle!</button>
+    </div>
+  </form>
+</div>
+
+
+<div>
+  <button style="background:none; border:none" class="justify-content-end"><a href="/dev/github-users"><img
+        width="69" src="/images/github-logo.png" alt="github logo"></a></button>
+</div>
+
+{{!-- ****MODIFY FOR DEV SIDE*** --}}
+<hr>
+<br>
+<br>
+<div class="row justify-content-center">
+  {{#each devAll}}
+  <div class="col-9 mb-5">
+    {{#unless gitRepo}}
+    <div class="card justify-content-center">
+      {{!-- CARD HEADER --}}
+      <div class="card-header py-1 ">
+
+        <div class="justify-content-left">
+          <form action="/{{id}}/delete" method="POST">
+            <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
+                alt="delete"></button>
+          </form>
+        </div>
+        {{#if topic}}
+        <h5 class="card-text text-center mb-0">{{lang}}: <b><i>{{topic}}</i></b></h5>
+        <div></div>
+
+        {{else}}
+        <h5 class="card-text text-center mb-0">{{lang}} </h5>
+        <div></div>
+        {{/if}}
+      </div>
+
+      {{!-- CARD BODY TEXT --}}
+
+      <div class="card-body text-center py-3">
+        <h6 class="card-subtitle"><u>{{title}}</u></h6>
+        {{#if description}}
+        <p class="card-text ">{{description}}</p>
+        {{/if}}
+      </div>
+      {{/unless}}
+
+      {{#if webUrl}}
+      <div class="card-body" style="border: 2px solid purple;">
+        <h6 class="text-center"><a href="{{webUrl}}" target="_blank">{{webUrl}}</a></h6>
+      </div>
+
+      {{else}} {{#if imageUrl}}
+      <img src="{{imageUrl}}" alt="{{title}}" class="resImg">
+
+      {{else}} {{#if vidUrl}}
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="{{vidUrl}}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen="true"></iframe>
+      </div>
+      {{else}} {{#if gitRepo}}
+      {{!-- <div class=""> --}}
+        {{!-- <object style="object-fit: contain; object-position: center;
+        width: 100%; height: 150px;" class="card-body" type="image/svg+xml"
+          data="https://gh-card.dev/repos/{{gitRepo}}.svg?fullname=&link_target=_blank"></object> --}}
+        {{!-- </div> --}}
+      <div class="card text-center justify-content-center">
+        <div class="card-header py-1" style="display: flex;">
+
+          <div class="justify-content-left">
+            <form action="/{{id}}/delete" method="POST">
+              <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
+                  alt="delete"></button>
+            </form>
+          </div>
+          <h5 class="card-text text-center mb-0">{{lang}} </h5>
+          <div></div>
+        </div>
+        <div class="card-body">
+          <object type="image/svg+xml" 
+            data="https://gh-card.dev/repos/{{gitRepo}}.svg?fullname=&link_target=_blank"></object>
+        </div>
+
+        <p class="card-text text-center">{{description}}</p>
+
+
+
+        {{/if}}
+        {{/if}}
+        {{/if}}
+        {{/if}}
+
+        {{!-- CARD FOOTER--}}
+        <div class="bottomCard card-footer py-0">
+          {{!-- date --}}
+          <div><i>{{date}}</i></div>
+          {{!-- edit --}}
+          <div><button style="background:none; border:none;"><a href="/{{_id}}/edit"><img height="25"
+                  src="/images/edit.png" alt="edit"></a></button></div>
+
+          {{!-- bookmarks --}}
+          <div>
+            <form class="fav-form" action="/{{id}}/bm" method="POST">
+              <input hidden checked type="radio" name="fav" value="{{fav}}">
+              <button id="fav-btn" style="background:none; border:none" class="bookBtn"><img height="25"
+                  src="/images/bookmark-open.png" alt="not bookmarked"></button>
+            </form>
+          </div>
+          {{!-- end bottom card FOOTER --}}
+        </div>
+        {{!-- end each card --}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+
+
+  {{!-- <div class="row justify-content-center">
+    {{#each devAll}}
+    {{> partial this}}
+    {{/each}}
+  </div> --}}

@@ -1,0 +1,87 @@
+<br>
+<hr>
+
+
+<h2>NEW REPLiT LANG:</h2>
+<div class="row">
+  <div class="col-md-6">
+    <form action="/languages/newReplit/add" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label> Main Language:
+          <input class="form-control" type="text" name="lang" value="{{lang}}"placeholder="javascript HTML css python C++ shell SQL">
+        </label>
+         {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label> Language Topic/Library/"Sub-Language":
+          <input type="text" name="topic" class="form-control" value="{{topic}}"
+            placeholder="function node HOF canvas boost Django react">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Resource Title:
+          <input type="text" name="title" class="form-control" value="{{title}}"/>
+        </label>
+        <br>
+         {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label> Description/Keywords/#hashtags:
+          <textarea class="form-control" name="description" cols="30" rows="4">{{description}}</textarea>
+        </label>
+      </div>
+      <div class="form-group">
+        <label> Replit Url:
+          <input class="form-control" type="text" name="riUrl" value="{{riUrl}}">
+        </label>
+        {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} {{#if errorUrl}}
+        <i style="color: red">**{{errorUrl}}</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+        {{/if}}
+      </div>
+      <input type="hidden" name="urlType" value="replit">
+      <input type="hidden" name="resType" value="code">
+      <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
+      <br>
+      {{#if errorMessage}}
+      <i style="color: red">*please fill in ALL required fields</i>
+      {{/if}}
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- //Editing an Embedded Repl
+// If anyone edits an embedded repl, it will automatically fork the repl for them and they will be editing their own
+version. If the user is logged into Replit in their browser, the forked repl will become theirs and show up on their "My
+repls" dashboard. If the owner edits an embedded repl, those changes will be saved to the repl and become visible to
+others who view the embedded repl. --}}
+
+{{!-- <iframe frameborder="0" width="100%" height="500px"
+  src="https://repl.it/@amasad/PitifulLastingWhoopingcrane?lite=true"></iframe>
+You can also manually embed repls by using your own custom iframe tags. These repls must have ?lite=true as a query
+parameter to be embedded. You can also include outputonly=1 as a query parameter if you want to hide the editor in the
+embed. Note that the code is still accessible if the user opens the repl on Replit. --}}

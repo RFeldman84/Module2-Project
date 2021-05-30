@@ -1,0 +1,17 @@
+<h2>Choose Folder(s) for Bookmark</h2>
+
+{{!-- not right way at all... maybe links then can add but thats alot to go through to add to one folder at a time... way to pick multiple folders to put resource in --}}
+
+<h4>{{foundRes.lang}}: {{foundRes.title}}</h4>
+<hr>
+
+ <label for="foldersLabel"><h4><u>FOLDERS</u></h4></label>
+  <div class="list-box">
+    {{#each foldersFromDB}}
+    <h5>{{this.name}} <button><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}} remove {{else}} add {{/if}}</a></button></h5>
+    {{/each}}
+  </div>
+  <br>
+
+{{!-- if choose somthing browser back does not go all the way back since above link and this link will loose place... need logic and right routing--}}
+  <h6><a href="/bookmarks">Back</a></h6>

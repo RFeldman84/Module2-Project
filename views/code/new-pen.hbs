@@ -1,0 +1,62 @@
+<br>
+<hr>
+
+
+<h2>NEW CODEPEN LANG:</h2>
+<div class="row">
+  <div class="col-md-6">
+    <form action="/languages/newPen/add" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label> Main Language:
+          <input class="form-control" type="text" name="lang" value="{{lang}}"placeholder="javascript HTML css">
+        </label>
+        {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label> Language Topic/Library/"Sub-Language":
+          <input type="text" name="topic" class="form-control" value="{{topic}}"
+            placeholder="objects datatypes sort canvas jquery Django react boost">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Resource Title:
+          <input type="text" name="title" class="form-control" value="{{title}}"/>
+        </label>
+        {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label> Description/Keywords/#hashtags:
+          <textarea class="form-control" name="description" cols="30" rows="4">{{description}}</textarea>
+        </label>
+      </div>
+      <div class="form-group">
+        <label> Codepen Url:
+          <input class="form-control" type="text" name="cpUrl" value="{{cpUrl}}" placeholder="https://codepen.io/@user/pen/...">
+        </label>
+        <br>
+        {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} {{#if errorUrl}}
+        <i style="color: red">**{{errorUrl}}</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+        {{/if}}
+      </div>
+      <div hidden class="form-group">
+        <input type="radio" name="urlType" value="codepen" checked>
+        <input type="radio" name="resType" value="code" checked>
+      </div>
+      <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
+      <br>
+      {{#if errorMessage}}
+      <i style="color: red">*please fill in ALL required fields</i>
+      {{/if}}
+    </form>
+  </div>
+</div>

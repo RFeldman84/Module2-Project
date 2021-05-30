@@ -1,0 +1,57 @@
+<hr>
+<h5>NEW YouTube VIDEO LANG:</h5>
+<div class="row">
+  <div class="col-md-6">
+    <form action="/languages/newVid/add" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label> Main Language:
+          <input class="form-control" type="text" name="lang" placeholder="javascript HTML css python C++ shell SQL" value="{{lang}}">
+        </label>
+        {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label> Language Topic/Library/"Sub-Language":
+          <input type="text" name="topic" class="form-control"
+            placeholder="object sort canvas jQuery Django react boost" value="{{topic}}">
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Resource Title:
+          <input type="text" name="title" class="form-control" value="{{title}}"/>
+        </label>
+        {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label> Description/Keywords/#hashtags:
+          <textarea class="form-control" name="description" cols="30" rows="4">{{description}}</textarea>
+        </label>
+      </div>
+      <div class="form-group">
+        <label> YouTube Url:
+          <input class="form-control" type="text" name="vidUrl" placeholder="https://youtu.be.. " value="{{vidUrl}}">
+        </label>
+        <br>
+        {{#if errorMessage}}
+        <i style="color: red">**required</i>
+        {{else}} {{#if errorUrl}}
+        <i style="color: red">**{{errorUrl}}</i>
+        {{else}} <i>*required</i>
+        {{/if}}
+        {{/if}}
+      </div>
+      <input type="hidden" name="urlType" value="video">
+      <input type="hidden" name="resType" value="code">
+      <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
+      <br>
+      {{#if errorMessage}} 
+      <i style="color: red">*please fill in ALL required fields</i>
+      {{/if}}
+    </form>
+  </div>
+</div>

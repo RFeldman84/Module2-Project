@@ -1,0 +1,190 @@
+<hr>
+{{!-- ***this if else is only working if the user creates a cwname then signs out and signs back in refreshing the page
+doesnt work!?!! .... so the form stays instead of switching to the button with link to their katas while they are signed
+in.. on top if you navigate to the route by typing it in browser it doesnt read that they now have a cwname even
+though the model updates.. again once they sign out and sign back in it shows up**--}}
+
+
+{{#if userInSession.cwName}}
+<div>
+  <button style="background:none; border:none"><a href="/languages/my-katas"><img width="50vw"
+        src="/images/codewars-logo.png" alt="codewars logo"></a></button>
+</div>
+{{else}}
+<div>
+  <form action="/languages/add-cw-user" method="POST" class="form-inline row">
+    <div class="form-group ">
+      <input type="text" name="cwName" placeholder="Codewars UserName?" class="form-control-sm">
+      <button type="submit" class="btn-sm btn-primary">ADD</button>
+    </div>
+  </form>
+</div>
+{{/if}}
+
+
+
+
+<div>
+  <center><img class="align-center" width="45%" src="/images/yougleit.png" alt="logo"></center>
+  <h4 style="font-size: 2em" class="text-center"><b>Coding Languages</b></h4>
+
+
+  <form action="/languages" method="GET" class="form-inline row justify-content-center">
+    <div class="form-group">
+      <input type="text" name="search" placeholder="Search Resources..." class=" form-control-lg">
+      <button type="submit" class="btn-lg btn-primary ">yoooogle!</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+<hr>
+<br>
+<br>
+<div class="row justify-content-center">
+  {{#each langAll}}
+  {{!-- <div class="row justify-content-center"> --}}
+    <div class="col-8 mb-5">
+      <div class="card">
+        {{!-- CARD HEADER --}}
+        <div class="card-header py-1 ">
+
+          <div class="">
+            <form action="/{{id}}/delete" method="POST">
+              <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
+                  alt="delete"></button>
+            </form>
+          </div>
+          {{#if topic}}
+          <h5 class="card-text text-center mb-0">{{lang}}: <b><i>{{topic}}</i></b></h5>
+          <div></div>
+
+          {{else}}
+          <h5 class="card-text text-center mb-0">{{lang}} </h5>
+          <div></div>
+
+          {{/if}}
+        </div>
+
+        {{!-- CARD BODY TEXT --}}
+        <div class="card-body text-center py-3">
+          <h6 class="card-subtitle"><u>{{title}}</u></h6>
+          {{#if description}}
+          <p class="card-text ">{{description}}</p>
+          {{/if}}
+        </div>
+
+
+        {{#if webUrl}}
+        <div class="card-body" style="border: 2px solid purple;">
+          <h6 class="text-center"><a href="{{webUrl}}" target="_blank">{{webUrl}}</a></h6>
+        </div>
+
+
+        {{!-- {{else}} {{#if codeSnip}}
+        <div class="px-3" style="background-color:black">
+          <p class="card-text">
+          <pre style="color:yellow;">{{description}}</pre>
+          </p>
+        </div> --}}
+
+
+        {{else}} {{#if imageUrl}}
+        <img src="{{imageUrl}}" alt="{{title}}" class="resImg">
+
+        {{else}} {{#if vidUrl}}
+        <div class=" embed-responsive embed-responsive-21by9">
+          <iframe class="embed-responsive-item" src="{{vidUrl}}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen="true"></iframe>
+        </div>
+
+        {{else}} {{#if cpUrl}}
+        <div class="embed-responsive embed-responsive-21by9">
+          <iframe class="embed-responsive-item" src="{{cpUrl}}?theme-id=dark&default-tab=html,result" loading="lazy"
+            allowtransparency="true" allowfullscreen="true"></iframe>
+        </div>
+
+        {{else}} {{#if riUrl}}
+        <div class="embed-responsive embed-responsive-21by9 ">
+          <iframe class="embed-responsive-item" src="{{riUrl}}?lite=true"></iframe>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{/if}}
+        {{/if}}
+        {{/if}}
+        {{!-- {{/if}} --}}
+        {{!-- if going to do codeSnip --}}
+        {{!-- CARD FOOTER--}}
+        <div class="bottomCard card-footer py-0">
+          {{!-- date --}}
+          <div><i>{{date}}</i></div>
+          {{!-- edit --}}
+          <div><button style="background:none; border:none;"><a href="/{{_id}}/edit"><img height="25"
+                  src="/images/edit.png" alt="edit"></a></button></div>
+
+          {{!-- bookmarks --}}
+          <div>
+            <form class="fav-form" action="/{{id}}/bm" method="POST">
+              <input type="hidden" name="fav" value="{{fav}}">
+              <button id="fav-btn" style="background:none; border:none" class="bookBtn"><img height="25"
+                  src="/images/bookmark-open.png" alt="not bookmarked"></button>
+            </form>
+          </div>
+          {{!-- end bottom card FOOTER --}}
+        </div>
+        {{!-- end each card --}}
+      </div>
+    </div>
+    {{!-- row inside makes them one row no matter what col-size--}}
+    {{!--
+  </div> --}}
+  {{/each}}
+  {{!-- row outside this makes them fit multiple col-size--}}
+</div>
+
+{{!-- <div class="row justify-content-center">
+  {{#each langAll}}
+  {{> partial this}}
+  {{/each}}
+</div> --}}
+
+
+
+
+
+
+{{!-- BOOTSTRAP docs iFrame object embeds--}}
+{{!-- <div class="embed-responsive embed-responsive-21by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+</div> --}}
+
+
+<!-- 21:9 aspect ratio -->
+{{!-- <div class="embed-responsive embed-responsive-21by9">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div> --}}
+
+<!-- 16:9 aspect ratio -->
+{{!-- <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div> --}}
+
+<!-- 4:3 aspect ratio -->
+{{!-- <div class="embed-responsive embed-responsive-4by3">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div> --}}
+
+<!-- 1:1 aspect ratio -->
+{{!-- <div class="embed-responsive embed-responsive-1by1">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div> --}}

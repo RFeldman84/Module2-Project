@@ -1,0 +1,191 @@
+<br>
+<hr>
+<h2 class="text-center"><u>BOOKMARKS</u></h2>
+
+<hr>
+<div>
+  {{!-- add new folder --}}
+
+  <div class="row">
+    <div class="col-md-6">
+      <form action="/bookmarks/new-folder" method="POST">
+        <div class="form-group">
+          <input class="form-control-sm" type="text" name="name" placeholder="enter new folder name">
+          <button type="submit" style="" class="btn btn-primary fas fa-folder-plus"></button>
+          {{#if errorMessage}}
+          <i style="color: red">*{{errorMessage}}</i>
+          {{/if}}
+      </form>
+    </div>
+  </div>
+
+
+  {{!-- display folders --}}
+  <div class="row row-cols-3  row-cols-md-6">
+    {{#each foldersDB}}
+    <div class="col mb-1">
+      {{!-- display edit name above... might want different page to include resources to remove? without taking off
+      bookmark (fav:yes) --}}
+      {{!-- <div>
+        <form class="hide upF" action="/bookmarks/folder/{{id}}/edit" method="post" class="form-inline row">
+          <div class="form-group ">
+            <input type="text" name="name" class="form-control form-control-sm">
+            <input type="submit" value="update">
+          </div>
+        </form>
+      </div> --}}
+
+      {{!-- display folders continued --}}
+      <div class="card" style="border: none;">
+        <a href="bookmarks/folder/{{_id}}" style="color:black;"><img src="/images/blue-folder.png" class="card-img-top"
+            alt="...">
+          <div class="card-img-overlay ">
+            <h5 class="card-title folderTxt">{{name}}</h5>
+          </div>
+        </a>
+      </div>
+      <div class="bottomCard card-header py-0 px-0 my-0 mx-0">
+        {{!-- edit folder --}}
+        <button class="editF" style="background:none; border:none;"><a href="bookmarks/folder/{{id}}/edit"><img
+              height="15" src="/images/edit.png" alt="edit"></a></button>
+        {{!-- delete folder --}}
+        <form action="/bookmarks/folder/{{id}}/delete" method="post">
+          <button style="background:none; border:none;"><img height="15" src="/images/delete.png" alt="delete"></button>
+        </form>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<hr>
+<br>
+
+{{!-- ////////////////////////// --}}
+
+<div class="row justify-content-center">
+  {{#each foundFavs}}
+  <div class="col-9 mb-5">
+    {{#unless gitRepo}}
+    <div class="card ">
+      {{!-- CARD HEADER --}}
+      <div class="card-header py-1 ">
+
+        <div class="justify-content-left">
+          <form action="/{{id}}/delete" method="POST">
+            <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
+                alt="delete"></button>
+          </form>
+        </div>
+        {{#if topic}}
+        <h5 class="card-text text-center mb-0">{{lang}}: <b><i>{{topic}}</i></b></h5>
+        {{else}}
+        <h5 class="card-text text-center mb-0">{{lang}} </h5>
+        {{/if}}
+        {{!-- link to folder choose form --}}
+        <div>
+          <form action="/bookmarks/choose-folders/{{_id}}" method="get">
+            <button style="background:none; border:none;"><img height="25" src="/images/folder.png"
+                alt="folder"></button>
+          </form>
+        </div>
+      </div>
+
+      {{!-- CARD BODY TEXT --}}
+      <div class="card-body text-center py-3">
+        <h6 class="card-subtitle"><u>{{title}}</u></h6>
+        {{#if description}}
+        <p class="card-text ">{{description}}</p>
+        {{/if}}
+      </div>
+      {{/unless}}
+
+      {{#if webUrl}}
+      <div class="card-body" style="border: 2px solid purple;">
+        <h6 class="text-center"><a href="{{webUrl}}" target="_blank">{{webUrl}}</a></h6>
+      </div>
+
+      {{else}} {{#if imageUrl}}
+      <img src="{{imageUrl}}" alt="{{title}}" class="resImg">
+
+      {{else}} {{#if vidUrl}}
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="{{vidUrl}}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen="true"></iframe>
+      </div>
+
+      {{else}} {{#if cpUrl}}
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="{{cpUrl}}?theme-id=dark&default-tab=html,result" loading="lazy"
+          allowtransparency="true" allowfullscreen="true"></iframe>
+      </div>
+
+      {{else}} {{#if riUrl}}
+      <div class="embed-responsive embed-responsive-21by9 ">
+        <iframe class="embed-responsive-item" src="{{riUrl}}?lite=true"></iframe>
+      </div>
+
+      {{else}} {{#if gitRepo}}
+      <div class="card text-center justify-content-center">
+        <div class="card-header py-1" style="display: flex;">
+          <div class="justify-content-left">
+            <form action="/{{id}}/delete" method="POST">
+              <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
+                  alt="delete"></button>
+            </form>
+          </div>
+          <h5 class="card-text text-center mb-0">{{lang}} </h5>
+            {{!-- link to folder choose form --}}
+        <div>
+          <form action="/bookmarks/choose-folders/{{_id}}" method="get">
+            <button style="background:none; border:none;"><img height="25" src="/images/folder.png"
+                alt="folder"></button>
+          </form>
+        </div>
+        </div>
+        <div class="card-body">
+          <object type="image/svg+xml"
+            data="https://gh-card.dev/repos/{{gitRepo}}.svg?fullname=&link_target=_blank"></object>
+        </div>
+        <p class="card-text text-center">{{description}}</p>
+
+        {{/if}}
+        {{/if}}
+        {{/if}}
+        {{/if}}
+        {{/if}}
+        {{/if}}
+
+        {{!-- CARD FOOTER--}}
+        <div class="bottomCard card-footer py-0">
+          {{!-- date --}}
+          <div><i>{{date}}</i></div>
+          {{!-- edit --}}
+          <div><button style="background:none; border:none;"><a href="/{{_id}}/edit"><img height="25"
+                  src="/images/edit.png" alt="edit"></a></button></div>
+
+          {{!-- bookmarks --}}
+          <div>
+            <form action="/{{id}}/bm" method="POST">
+              <input hidden checked type="radio" name="fav" value="{{fav}}">
+              <button class="bookBtn"
+                style="background:none; border:none; object-fit: contain; object-position: center;"><img
+                  height="25" src="/images/bookmarked.png" alt="logo"></button>
+            </form>
+          </div>
+          {{!-- end bottom card FOOTER --}}
+        </div>
+        {{!-- end each card --}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+
+
+  {{!-- <div class="row justify-content-center">
+    {{#each foundFavs}}
+    {{> partial this}}
+    {{/each}}
+  </div> --}}

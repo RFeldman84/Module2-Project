@@ -1,0 +1,45 @@
+<br>
+<center><h2><u>GitHub Users</u></h2>
+
+
+
+  {{!-- add new user--}}
+
+  
+      <form action="/dev/newGitUser/add" method="POST">
+        <div class="form-group">
+          <input class="form-control-sm" type="text" name="gitUser" placeholder="enter username" required>
+        {{#if errorInput}}
+        <i style="color: red">*{{errorInput}}</i>
+        {{/if}}
+          <input type="hidden" name="resType" value="gituser">
+          <button type="submit"  class="btn-sm btn-primary">ADD</button>
+          {{#if errorMessage}}
+          <i style="color: red">*{{errorMessage}}</i>
+          {{/if}}
+      </form>
+   
+</center>
+<br>
+
+
+
+
+<div class="card-deck">
+{{#each gitUsersDB}}
+ <div class="card " style="border:none">
+    <form action="/{{id}}/delete" method="POST">
+    <button style="background:none; border:none;"><img height="25" src="/images/delete.png" alt="delete"></button>
+    </form>
+    <div class="github-card" data-github="{{gitUser}}" data-width="220"  data-theme="medium" data-target="blank">
+    </div>
+  </div>
+{{/each}} 
+</div>
+
+
+
+
+ 
+      
+

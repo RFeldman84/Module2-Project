@@ -1,0 +1,22 @@
+<br>
+<h3>NEW GITHUB USER:</h3>
+<div class="row">
+  <div class="col-md-6">
+    <form action="/dev/newGitUser/add" method="POST">
+      <div class="form-group">
+        <label> GitHub User:
+          <input class="form-control" type="text" name="gitUser" placeholder="USERNAME" >
+        </label>
+        {{#if errorInput}}
+        <i style="color: red">*{{errorInput}}</i>
+        {{/if}}
+      </div>
+      <input type="hidden" name="resType" value="gituser">
+      <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
+      <br>
+      {{#if errorMessage}}
+      <i style="color: red"> *{{errorMessage}}</i>
+      {{/if}}
+    </form>
+  </div>
+</div>
