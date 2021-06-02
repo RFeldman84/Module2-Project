@@ -13,38 +13,6 @@ const routeGuard = require("../configs/route-guard.config")
 /* GET home page */
 router.get("/", (req, res, next) => res.render("index.hbs"));
 
-// put these in nav drop down then get rid of /pick-new route 
-// will be 2 dropdown for pick language resource dev resource
-router.get("/pick-new", routeGuard, (req, res) => res.render("pick-new"))
-
-
-
-///BOOKMARKS
-// router.post('/:id/bm', (req, res, next) => {
-	
-// 	let tFav = req.body.fav 
-
-// console.log(req.body.fav)
-// if(tFav == "no") tFav = "yes"
-// else if(tFav == "yes") tFav = "no"
-
-//   Code.findByIdAndUpdate(req.params.id, {fav: tFav}, { new: true })
-//     .then((updatedCode) => {	
-//       console.log("updated:", updatedCode);
-//       res.redirect(`back`);
-//     })
-//   .catch((err) => console.log(`Error while saving updated fav resource in DB : ${err}`));
-// });
-
-// // get for BOOKMARKS
-// router.get('/bookmarks', (req, res, next) => {
-//   Code.find({$and:[{ userId: req.session.currentUser._id }, { fav: "yes"}]}).sort({ createdAt: -1 })
-//   .then((foundFavs) => {
-//     //console.log("found code: ", foundFavs);
-//     res.render("bookmarks", {foundFavs});
-//     })
-//   .catch((err) => console.log(`Error while getting bookmarks from DB for editing: ${err}`));
-// })
 
 //// DELETE
 

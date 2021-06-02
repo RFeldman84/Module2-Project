@@ -1,7 +1,10 @@
 body {
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 4vw 5vw 0 5vw;
 
+	height: 100vh;
 }
 	/* background: url("/images/bglight1.jpg") 0 0 no-repeat;
 	background-size: cover; */
@@ -11,14 +14,46 @@ a {
 	text-decoration: none;
 }
 
+a:hover{
+	text-decoration: none;
+}
+
+.hide{
+	display:none;
+}
+
 
 /* NAV */
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	border-bottom: 1px solid darkslategrey;
+	background-color: slategrey;
+	height: 4vw;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 5vw;
+	z-index: 3;
+}
 
-nav{
+
+/* div:nth-child(1) {
+	@include center-content();
+	flex-direction: row;
+	justify-content: space-between;
+	width: 10vw;
+} */
+
+/* nav{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-}
+} */
 
 .dropdown-item {
 	display: flex;
@@ -26,12 +61,68 @@ nav{
 	justify-content: center;
 }
 
-.img-btn{
-	border: none;
+
+.dropdown-toggle::after {
+	display: none;
+}
+
+.git-drop:hover{
 	background: none;
 }
 
 
+/* homepage */
+
+#logoMain{
+	width: 55vw;	
+}
+
+
+#home{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 90vh;
+}
+
+/* #home section{
+	margin-top: 2vw;
+	margin-bottom: 4vw;
+} */
+
+
+
+
+.flex-home-bottom{
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	text-align: center;
+}
+
+.home-bottom-item{
+	width: 20%;
+	margin-right: 1vw;
+	border: 1px solid black;
+	border-radius: 5%;
+	line-height: 1.5;
+	padding: 1vw;
+}
+
+.home-bottom-item img{
+	height: 38px;
+	margin-bottom: 1vw;
+}
+
+.home-bottom-item p{
+	text-align: left;
+}
+
+
+
+
+
+/* CARDS */
 .bottomCard {
 	display: flex;
 	justify-content: space-between;
@@ -59,17 +150,8 @@ nav{
 }
 
 
-#logoMain{
-	width: 55vw;	
-}
 
-.logoSearch{
 
-}
-
-#logoNav{
-
-}
 
 .folderTxt {
   position: absolute;
@@ -82,9 +164,64 @@ nav{
 }
 
 
-.hide{
-	display:none;
+/* forms */
+
+
+.form-page{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 90vh;
 }
+
+.form-icon-flex{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
+}
+
+.add-form{
+	display: flex;
+	flex-direction: column;
+	border: 2px solid black;
+	padding: 25px;
+	align-items: center;
+}
+
+.form-icon{
+height: 15vw;
+}
+
+
+.form-row{
+	width: 35vw;
+}
+
+
+.form-group {
+	width: 90%;
+}
+
+.form-group label {
+	width: 100%;
+	position: relative;
+}
+
+.form-group label i {
+	position: absolute;
+	right: 0;
+}
+
+form input{
+	background: rgba(167, 160, 160, 0.831);
+}
+
+input.form-control, textarea.form-control{
+	background-color: #ccc5c578;
+	border-radius: 1.25rem;
+}
+
 
 
 

@@ -1,73 +1,50 @@
-<hr>
 
+<div id="home">
 
+<section>
+<aside class="openSate"> Hey {{#if userInSession}}<b>{{userInSession.username}}</b>{{else}} Programmers{{/if}}! You searched hard g👀gled it.. don't risk losing it... now you can....</aside>
 <center><img id="logoMain"  src="/images/yougleit.png" alt="logo"></center>
+</section>
+
+<section>
+{{!-- {{#if userInSession}}
+<center> <h4>Welcome, {{userInSession.username}}</h4></center>
+{{/if}} --}}
+<center><h5>Why get lost in a sea of searches, browser bookmarks & files in folders all over your computer? <br> Store & search your favorite web resources & pics in one spot for your programming project needs.</h5></center>
+</section>
 
 
+<section class="flex-home-bottom" >
+    <div class="home-bottom-item">
+        <button style="margin-bottom: 1vw;" type="button" class="btn btn-danger  dropdown-toggle-split">+</button>
+        <h5><u>Add</u></h5>
+        <p> Clearly personalize labels to your resources to know whats what!?! Add Pics, Weblinks & embedded Youtube videos. Codeing - embedded Codepens & Repl it's. Development -  Github repos & fav users button </p>
+    </div>
 
-{{#if userInSession}}
-<p>Welcome, {{ userInSession.username }}</p>
-<button><a href="/pick-new">ADD RESOURCE</a></button>
+    <div class="home-bottom-item">
+        <img src="/images/search.png" alt="search image">
+        <h5><u>Resource Types</u></h5>
+        <p> somthing about cards and codewars/gituser feature buttons .... your completed katas ready to open in tabs... with youtube videos, codepens & replit's embedded to reference straight from site ...or ya ...open too.</p>
+    </div>
 
-    <br>
-    <br>
-    <button><a href="/languages">SEARCH BY <br>PROGRAMMING LANGUAGE</a></button>
+    <div class="home-bottom-item">
+        <img src="/images/search.png" alt="search image">
+        <h5><u>Search</u></h5>
+        <p> somthing about search ....search with your own terms hashtags whatever.. can search "weblink" "picture" "video" "codepen" "replit" "github" for specific kind </p>
+    </div>
 
-    <br>
-    <br>
+    <div class="home-bottom-item">
+        <img src="/images/bookmarked.png" alt="bookmark image">
+        <h5><u>Bookmarks & Folders</u></h5>
+        <p> Bookmark resources relevant to your current projects and must haves in one place. Clear and repeat for next or create folders for further convenience.</p>
+    </div>
 
-    <button><a href="/dev">SEARCH BY <br>PROGRAMMING/DEVELOPMENT</a></button>
+</section>
+
+</div>
+ 
+
+   
 
 
-
-    {{else}}
-
-    {{!-- <p>No user in session currently!</p> --}}
-    <h2>Sign up</h2>
-
-    <form action="/signup" method="POST">
-
-        <label> Username:
-            <input type="text" name="username">
-        </label>
-        <label> Email:
-            <input type="email" name="email">
-        </label>
-        <label> Password:
-            <input type="password" name="userPassword">
-        </label>
-
-        <button type="submit">Sign up</button>
-
-        <br />
-        {{#if errorMessage}}
-        {{errorMessage}}
-        {{/if}}
-    </form>
-
-    <br>
-    <br>
-
-    <h1>OR</h1>
-
-    <h2>Login</h2>
-
-    <form action="/login" method="POST">
-
-        <label> Email:
-            <input type="email" name="email">
-        </label>
-        <label> Password:
-            <input type="password" name="userPassword">
-        </label>
-
-        <button type="submit">Login</button>
-
-        <br />
-        {{#if errorMessage}}
-        {{errorMessage}}
-        {{/if}}
-
-    </form>
-
-    {{/if}}
+    {{!-- store and search your favorite web resources & pics for programming needs. Why let them get lost in a sea of browser bookmarks and files in folders all over your computer? Here you can clearly read whats what and reach in one spot. Your web links, fav github users & helpful repos & all your completed katas ready to open in tabs... with youtube videos, codepens & replit's embedded to reference straight from site ...or ya ...open too. Bookmark the ones relevant to your current project in one place then clear and repeat for next. you searched hard googled it.. dont risk losing it... now you can yoooogle it!... or yougle it!  --}}

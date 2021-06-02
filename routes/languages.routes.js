@@ -58,7 +58,7 @@ router.get("/newReplit", routeGuard,  (req, res) => res.render("code/new-replit"
 
 // POST RESOURCES  
 const urlE = "please provide a url"
-const urlInvalid = "please enter valid site url including http/https"
+const urlInvalid = "please enter valid url including http/https"
 
 //POST PICTURE
 router.post("/newPic/add", routeGuard, fileUploader.single("image"),(req, res) => {
@@ -76,13 +76,7 @@ router.post("/newPic/add", routeGuard, fileUploader.single("image"),(req, res) =
 
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, imageUrl: req.file.path})
 		.then(() => res.redirect("/languages"))
-		.catch(err =>{
-		if (err instanceof mongoose.Error.ValidationError) {
-				res.render("code/new-pic.hbs", { errorMessage: true })
-			} else {
-					console.log("Error while creating a new pic resource: ", err)
-			}
-		})
+		.catch(err => console.log("Error while creating a new pic resource: ", err))
 	});
 
 // 500 from bin/www 400 wrong type of file or wrong size HOW TO HANDLE with message??
@@ -121,14 +115,8 @@ router.post("/newLink/add",routeGuard,fileUploader.single("image"),(req, res) =>
 		res.redirect("/languages")
 })
 .catch(err => console.log(`Error while getting code from the DB: ${err}`))
-	// .catch(err =>{
-	// 	if (err instanceof mongoose.Error.ValidationError) {
-	// 		res.render("code/new-link.hbs", { errorMessage: true }, req.body)
-	// 	} else {
-	// 		console.log("Error while creating a new web link resource: ", err)
-	// 	}
 	})
-//});
+
 
 
 
@@ -157,13 +145,7 @@ router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => 
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, vidUrl:urlYe})
 
 		.then(() => res.redirect("/languages"))
-		.catch(err =>{
-			if (err instanceof mongoose.Error.ValidationError) {
-				res.render("code/new-vid.hbs", { errorMessage: true })
-			} else {
-				console.log("Error while creating a new vid resource: ", err)
-			}
-		})
+		.catch(err => console.log("Error while creating a new vid resource: ", err))
 });
 
 
@@ -182,21 +164,12 @@ router.post("/newPen/add",routeGuard,fileUploader.single("image"),(req, res) => 
 	return  res.render("code/new-pen", {errorUrl: urlInvalid, ...req.body})
 	 
 	}
-	//  if(!req.body.cpUrl.indexOf("https://codepen.io/") === 0 ){
-	// 	return res.render("code/new-pen", {errorUrl: urlInvalid, ...req.body});
-	// }
 
 	let urlCe = req.body.cpUrl.replace("/pen", "/embed")
 
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, cpUrl:urlCe})
 		.then(() => res.redirect("/languages"))
-		.catch(err =>{
-			if (err instanceof mongoose.Error.ValidationError) {
-				res.render("code/new-pen.hbs", { errorMessage: true })
-			} else {
-					console.log("Error while creating a new codepen resource: ", err)
-			}
-		})
+		.catch(err => console.log("Error while creating a new codepen resource: ", err))
 });
 
 
@@ -227,13 +200,7 @@ router.post("/newReplit/add",routeGuard,fileUploader.single("image"),(req, res) 
 	
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, riUrl: riFix})
 		.then(() => res.redirect("/languages"))
-		.catch(err =>{
-			if (err instanceof mongoose.Error.ValidationError) {
-				res.render("code/new-replit.hbs", { errorMessage: true })
-			} else {
-					console.log("Error while creating a new replit resource: ", err)
-			}
-		})
+		.catch(err => console.log("Error while creating a new replit resource: ", err))
 });
 
 
@@ -241,14 +208,9 @@ router.post("/newReplit/add",routeGuard,fileUploader.single("image"),(req, res) 
 router.post('/add-cw-user', (req, res, next) => {
 	const {cwName} = req.body
 	req.session.currentUser.cwName = cwName
-	console.log(req.session)
   User.findByIdAndUpdate(req.session.currentUser, {cwName, ...req.session}, { new: true })
     .then((updatedCode) => {
-      console.log("updated:", updatedCode);
-			console.log("updated sess:",req.session)
-      console.log("updated cw:", updatedCode.cwName);
-			console.log("updated sess cw:", req.session.currentUser.cwName)
-      res.redirect(`/languages/my-katas`);
+      res.redirect(`/languages`);
     })
   .catch((err) => console.log(`Error while saving cwName resource in DB : ${err}`));
 });

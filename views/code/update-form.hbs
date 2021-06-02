@@ -1,11 +1,11 @@
 <h2>EDIT RESOURCE INFO</h2>
 
-<div class="row">
-  <div class="col-md-6">
+<div class="row form-row ">
+  <div class="col-md-12">
     <form action="/{{foundCode.id}}/edit" method="POST">
       <div class="form-group">
-        <label> Main Language:
-          <input class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
+        <label> Main Language: <i style="color: red">*required</i>
+          <input required class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
         </label>
       </div>
       <div class="form-group">
@@ -14,8 +14,8 @@
         </label>
       </div>
       <div class="form-group">
-        <label>Resource Title:
-          <input type="text" name="title" class="form-control" value="{{foundCode.title}}" />
+        <label>Resource Title: <i style="color: red">*required</i>
+          <input required type="text" name="title" class="form-control" value="{{foundCode.title}}" />
         </label>
       </div>
       <div class="form-group">

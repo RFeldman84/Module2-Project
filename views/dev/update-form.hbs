@@ -5,7 +5,7 @@
     <form action="/{{foundCode.id}}/edit" method="POST">
       <div class="form-group">
         <label> Main Topic:
-          <input class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
+          <input required class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
         </label>
       </div>
       <div class="form-group">
@@ -15,7 +15,7 @@
       </div>
       <div class="form-group">
         <label>Resource Title:
-          <input type="text" name="title" class="form-control" value="{{foundCode.title}}" />
+          <input required type="text" name="title" class="form-control" value="{{foundCode.title}}" />
         </label>
       </div>
       <div class="form-group">
