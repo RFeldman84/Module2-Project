@@ -1,8 +1,8 @@
-<h2>EDIT RESOURCE INFO</h2>
+<h2>EDIT LANGUAGE RESOURCE INFO</h2>
 
-<div class="row form-row ">
+<div class="row form-row">
   <div class="col-md-12">
-    <form action="/{{foundCode.id}}/edit" method="POST">
+    <form class="add-form" action="/{{foundCode.id}}/edit" method="POST">
       <div class="form-group">
         <label> Main Language: <i style="color: red">*required</i>
           <input required class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
@@ -27,4 +27,5 @@
         <input type="hidden" name="referer" value="{{referer}}">
       </div>
       <button type="submit" class="btn btn-primary">UPDATE</button>
+  </div>
 </div>

@@ -10,7 +10,7 @@
     <div class="col-md-6">
       <form action="/bookmarks/new-folder" method="POST">
         <div class="form-group">
-          <input class="form-control-sm" type="text" name="name" placeholder="enter new folder name">
+          <input required class="form-control-sm" type="text" name="name" placeholder="enter new folder name">
           <button type="submit" style="" class="btn btn-primary fas fa-folder-plus"></button>
           {{#if errorMessage}}
           <i style="color: red">*{{errorMessage}}</i>
@@ -24,8 +24,7 @@
   <div class="row row-cols-3  row-cols-md-6">
     {{#each foldersDB}}
     <div class="col mb-1">
-      {{!-- display edit name above... might want different page to include resources to remove? without taking off
-      bookmark (fav:yes) --}}
+      {{!-- display edit name above... --}}
       {{!-- <div>
         <form class="hide upF" action="/bookmarks/folder/{{id}}/edit" method="post" class="form-inline row">
           <div class="form-group ">

@@ -1,63 +1,64 @@
 <br>
-<hr>
+<div class="form-page">
+<center><h3>NEW Language Resource</h3></center>
 
+  <div class="form-icon-flex">
+    <img class="form-icon" src="/images/camera.png" alt="camera icon">
 
-<h2>NEW PICTURE LANG: </h2>
-<div class="row form-row ">
-  <div class="col-md-12">
-    <form action="/languages/newPic/add" method="POST" enctype="multipart/form-data">
-      <div class="form-group">
-        <label> Main Language:
-          <input class="form-control" type="text" name="lang" value="{{lang}} "placeholder="python C# shell SQL javascript">
-        </label>
-        {{#if errorMessage}}
-        <i style="color: red">**required</i>
-        {{else}} <i>*required</i>
-        {{/if}}
+    <div class="row form-row">
+      <div class="col-md-12">
+        <form class="add-form" action="/languages/newPic/add" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label> Main Language:
+            {{#if errorMessage}}
+            <i style="color: red">**required</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+              <input class="form-control" type="text" name="lang" value="{{lang}}" placeholder="java python C# swift XHTML css javascript">
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Language Topic/Library/"Sub-Language":
+              <input type="text" name="topic" class="form-control" value="{{topic}}"
+                placeholder="function sort canvas jquery Django react boost">
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Resource Title:
+            {{#if errorMessage}}
+            <i style="color: red">**required</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+              <input type="text" name="title" class="form-control" value="{{title}}" />
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Description/Keywords/#hashtags:
+              <textarea class="form-control" name="description" cols="30" rows="4">{{description}}</textarea>
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Image:
+              <input type="file" name="image" class="form-control-file" />
+            </label>
+            {{#if errorMessage}} <i>*image JPEG/PNG/SVG/GIF/...(up to 10MB)</i><i style="color: red"> **required</i>
+            {{else}}{{#if errorImg}}
+            <i style="color: red">*{{errorImg}}</i>
+            {{else}} <i>*image JPEG/PNG/SVG/GIF/...(up to 10MB)</i>
+            {{/if}} 
+            {{/if}}
+          </div>
+          <div hidden class="form-group">
+            <input type="hidden" name="urlType" value="picture">
+            <input type="hidden" name="resType" value="code">
+          </div>
+          <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
+          {{#if errorMessage}} 
+          <i style="color: red">*please fill in ALL required fields</i>
+          {{/if}}
+        </form>
       </div>
-      <div class="form-group">
-        <label> Language Topic/Library/"Sub-Language":
-          <input type="text" name="topic" class="form-control" value="{{topic}}"
-            placeholder="function sort canvas jquery Django react boost">
-        </label>
-      </div>
-      <div class="form-group">
-        <label>Resource Title:
-          <input type="text" name="title" class="form-control" value="{{title}}" />
-        </label>
-        {{#if errorMessage}}
-        <i style="color: red">**required</i>
-        {{else}} <i>*required</i>
-        {{/if}}
-      </div>
-      <div class="form-group">
-        <label> Description/Keywords/#hashtags:
-          <textarea class="form-control" name="description" cols="30" rows="4">{{description}}</textarea>
-        </label>
-      </div>
-      <div class="form-group">
-        <label> Image:
-          <input type="file" name="image" class="form-control-file" />
-        </label>
-        <br>
-        {{#if errorMessage}} <i>*image JPEG/PNG/SVG/GIF/...(up to 10MB)</i><i style="color: red"> **required</i>
-        {{else}}{{#if errorImg}}
-        <i style="color: red">*{{errorImg}}</i>
-        {{else}} <i>*image JPEG/PNG/SVG/GIF/...(up to 10MB)</i>
-        {{/if}} 
-        {{/if}}
-      </div>
-      <div hidden class="form-group">
-        <input type="hidden" name="urlType" value="picture">
-        <input type="hidden" name="resType" value="code">
-      </div>
-      <br>
-      <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
-       <br>
-      {{#if errorMessage}} 
-      <i style="color: red">*please fill in ALL required fields</i>
-      {{/if}}
-    </form>
+    </div>
   </div>
 </div>
 

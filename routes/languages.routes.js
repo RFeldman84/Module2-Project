@@ -96,7 +96,7 @@ router.post("/newPic/add", routeGuard, fileUploader.single("image"),(req, res) =
 
 // for some reason rest wont work without fileUploader.single("image") so leave in
 // //POST WEBLINK
-router.post("/newLink/add",routeGuard,fileUploader.single("image"),(req, res) => {
+router.post("/newLink/add",routeGuard,(req, res) => {
 	// console.log('body', req.body)
 	// console.log('requser', req.session.currentUser)
 	const { lang, topic, title, description, webUrl, urlType, resType } = req.body
@@ -107,9 +107,6 @@ router.post("/newLink/add",routeGuard,fileUploader.single("image"),(req, res) =>
   } else if(webUrl.indexOf("http://") !== 0 && webUrl.indexOf("https://") !== 0){
 		return res.render("code/new-link", {errorUrl: urlInvalid, ...req.body});
 	}
-
-
-
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, webUrl})
 	.then(() => {
 		res.redirect("/languages")

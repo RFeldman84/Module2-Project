@@ -1,6 +1,6 @@
 
 
-
+<br>
 {{#if userInSession.cwName}}
 <div>
   <button style="background:none; border:none"><a href="/languages/my-katas"><img width="50vw"
@@ -10,7 +10,7 @@
 <div>
   <form action="/languages/add-cw-user" method="POST" class="form-inline row">
     <div class="form-group ">
-      <input type="text" name="cwName" placeholder="Codewars UserName?" class="form-control-sm">
+      <input required type="text" name="cwName" placeholder="Codewars UserName?" class="form-control-sm">
       <button type="submit" class="btn-sm btn-primary">ADD</button>
     </div>
   </form>

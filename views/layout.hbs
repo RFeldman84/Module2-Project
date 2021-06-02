@@ -13,48 +13,45 @@
   </head>
 
   <body>
-    {{!-- <div class="container"> --}}
       <nav>
-        {{#if userInSession}}
         <a href="/">HOME</a>
-          {{!-- <a href="/languages">code </a>
-          <a href="/dev">dev</a> --}}
-
-<div class="btn-group">
-  <button type="button" class="btn btn-danger"><a href="/languages">Language Resources</a></button>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+
-    <span class="sr-only"></span>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="/languages/newPic"><img src="/images/camera.png" height="50px" alt="add picture"></a>
-    <a class="dropdown-item" href="/languages/newLink"><img src="/images/weblink.png" height="50px" alt="add web link"></a> 
-    <a class="dropdown-item" href="/languages/newVid"><img src="/images/youtube-button.png" height="50px" alt="add youtube video"></a> 
-    <a class="dropdown-item" href="/languages/newPen"><img src="/images/codepen.png" height="50px" alt="add codepen"></a> 
-    <a class="dropdown-item" href="/languages/newReplit"><img src="/images/replit-logo.png" height="50px" alt="add replit"></a> 
-  </div>
-</div>
-
-<div class="btn-group">
-  <button type="button" class="btn btn-danger"><a href="/dev">Development Resources</a></button>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+
-    <span class="sr-only"></span>
-  </button>
-  <div class="dropdown-menu"> 
-    <div class="dropdown-item"><p>ADD</p></div>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="/dev/newPic"><img src="/images/camera.png" height="50px" alt="add picture"></a>
-    <a class="dropdown-item" href="/dev/newLink"><img src="/images/weblink.png" height="50px" alt="add web link"></a> 
-    <a class="dropdown-item" href="/dev/newVid"><img src="/images/youtube-button.png" height="50px" alt="add youtube video"></a> 
-    <div class="dropdown-item git-drop"><img src="/images/github-logo.png" height="50px" alt="add github repo"></div>
-    <a class="dropdown-item" href="/dev/newGitRepo">Repo</a>
-    <a class="dropdown-item" href="/dev/newGitUser">User</a>
-  </div>
-</div>
+          
+      {{#if userInSession}}
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger"><a href="/languages">Language Resources</a></button>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+
+          <span class="sr-only"></span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/languages/newPic"><img src="/images/camera.png" height="50px" alt="add picture"></a>
+          <a class="dropdown-item" href="/languages/newLink"><img src="/images/weblink.png" height="50px" alt="add web link"></a> 
+          <a class="dropdown-item" href="/languages/newVid"><img src="/images/youtube-button.png" height="50px" alt="add youtube video"></a> 
+          <a class="dropdown-item" href="/languages/newPen"><img src="/images/codepen.png" height="50px" alt="add codepen"></a> 
+          <a class="dropdown-item" href="/languages/newReplit"><img src="/images/replit-logo.png" height="50px" alt="add replit"></a> 
+        </div>
+      </div>
 
 
+      <a href="/bookmarks">Bookmarks</a>
 
-          {{!-- <a href="/pick-new">pick resources</a> --}}
-          <a href="/bookmarks">Bookmarks</a>
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger"><a href="/dev">Development Resources</a></button>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+
+          <span class="sr-only"></span>
+        </button>
+        <div class="dropdown-menu"> 
+          <div class="dropdown-item"><p>ADD</p></div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/dev/newPic"><img src="/images/camera.png" height="50px" alt="add picture"></a>
+          <a class="dropdown-item" href="/dev/newLink"><img src="/images/weblink.png" height="50px" alt="add web link"></a> 
+          <a class="dropdown-item" href="/dev/newVid"><img src="/images/youtube-button.png" height="50px" alt="add youtube video"></a> 
+          <div class="dropdown-item git-drop"><img src="/images/github-logo.png" height="50px" alt="add github repo"></div>
+          <a class="dropdown-item" href="/dev/newGitRepo">Repo</a>
+          <a class="dropdown-item" href="/dev/newGitUser">User</a>
+        </div>
+      </div>
+
+          {{!-- <a href="/bookmarks">Bookmarks</a> --}}
           <form action="/logout" method="POST">
             <button type="submit">Logout</button>
           </form>
@@ -70,7 +67,6 @@
         {{/if}}
       </nav>
     <div class="container">
-    {{!-- <div> --}}
       {{{body}}}
     </div>
 

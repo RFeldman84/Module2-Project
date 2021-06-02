@@ -1,61 +1,62 @@
 <br>
-<hr>
+<div class="form-page">
+<center><h3>NEW Language Resource</h3></center>
+  <div class="form-icon-flex">  
+    <img class="form-icon" src="/images/replit-logo.png" alt="repl it icon">
 
-
-<h2>NEW REPLiT LANG:</h2>
-<div class="row form-row ">
-  <div class="col-md-12">
-    <form action="/languages/newReplit/add" method="POST" enctype="multipart/form-data">
-      <div class="form-group">
-        <label> Main Language:
-          <input class="form-control" type="text" name="lang" value="{{lang}}"placeholder="javascript HTML css python C++ shell SQL">
-        </label>
-         {{#if errorMessage}}
-        <i style="color: red">**required</i>
-        {{else}} <i>*required</i>
-        {{/if}}
+    <div class="row form-row">
+      <div class="col-md-12">
+        <form class="add-form" action="/languages/newReplit/add" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label> Main Language:
+            {{#if errorMessage}}
+            <i style="color: red">**required</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+              <input class="form-control" type="text" name="lang" value="{{lang}}"placeholder="javascript HTML css python C++ shell SQL">
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Language Topic/Library/"Sub-Language":
+              <input type="text" name="topic" class="form-control" value="{{topic}}"
+                placeholder="function node HOF canvas boost Django react">
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Resource Title:
+            {{#if errorMessage}}
+            <i style="color: red">**required</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+              <input type="text" name="title" class="form-control" value="{{title}}"/>
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Description/Keywords/#hashtags:
+              <textarea class="form-control" name="description" cols="30" rows="4">{{description}}</textarea>
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Replit Url:
+            {{#if errorMessage}}
+            <i style="color: red">**required</i>
+            {{else}} {{#if errorUrl}}
+            <i style="color: red">**{{errorUrl}}</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+            {{/if}}
+              <input class="form-control" type="text" name="riUrl" value="{{riUrl}}">
+            </label>
+          </div>
+          <input type="hidden" name="urlType" value="replit">
+          <input type="hidden" name="resType" value="code">
+          <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
+          {{#if errorMessage}}
+          <i style="color: red">*please fill in ALL required fields</i>
+          {{/if}}
+        </form>
       </div>
-      <div class="form-group">
-        <label> Language Topic/Library/"Sub-Language":
-          <input type="text" name="topic" class="form-control" value="{{topic}}"
-            placeholder="function node HOF canvas boost Django react">
-        </label>
-      </div>
-      <div class="form-group">
-        <label>Resource Title:
-          <input type="text" name="title" class="form-control" value="{{title}}"/>
-        </label>
-        <br>
-         {{#if errorMessage}}
-        <i style="color: red">**required</i>
-        {{else}} <i>*required</i>
-        {{/if}}
-      </div>
-      <div class="form-group">
-        <label> Description/Keywords/#hashtags:
-          <textarea class="form-control" name="description" cols="30" rows="4">{{description}}</textarea>
-        </label>
-      </div>
-      <div class="form-group">
-        <label> Replit Url:
-          <input class="form-control" type="text" name="riUrl" value="{{riUrl}}">
-        </label>
-        {{#if errorMessage}}
-        <i style="color: red">**required</i>
-        {{else}} {{#if errorUrl}}
-        <i style="color: red">**{{errorUrl}}</i>
-        {{else}} <i>*required</i>
-        {{/if}}
-        {{/if}}
-      </div>
-      <input type="hidden" name="urlType" value="replit">
-      <input type="hidden" name="resType" value="code">
-      <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
-      <br>
-      {{#if errorMessage}}
-      <i style="color: red">*please fill in ALL required fields</i>
-      {{/if}}
-    </form>
+    </div>
   </div>
 </div>
 
