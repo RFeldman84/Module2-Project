@@ -1,41 +1,41 @@
 <br>
-<hr>
-
-
-
-
-
-<h2>NEW GITHUB REPO:</h2>
-<div class="row">
-  <div class="col-md-6">
-    <form class="add-form" action="/dev/newGitRepo/add" method="POST" enctype="multipart/form-data">
-      <div class="form-group">
-        <label> Repo Topic:
-          <input class="form-control" type="text" name="lang">
-        </label>
-        <i>*required</i>
+<div class="form-page">
+<center><h3>NEW Github Repository Resource</h3></center>
+  <div class="form-icon-flex">  
+    
+    <img class="form-icon" src="/images/github-logo.png" alt="github icon">
+    <div class="row form-row">
+      <div class="col-md-12">
+        <form class="add-form" action="/dev/newGitRepo/add" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label> Repo Topic:
+              <input class="form-control" type="text" name="lang">
+            </label>
+            <i>*required</i>
+          </div>
+          <div class="form-group">
+            <label> Description/Languages/Keywords:
+              <textarea class="form-control" name="description" cols="30" rows="4"></textarea>
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Repository:
+              <input class="form-control" type="text" name="gitRepo" placeholder="<USERNAME>/<REPO>">
+            </label>
+            {{#if errorInput}}
+            <i style="color: red">*{{errorInput}}</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+          </div>
+          <input type="hidden" name="urlType" value="repo">
+          <input type="hidden" name="resType" value="dev">
+          <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
+          <br>
+          {{#if errorMessage}}
+          <i style="color: red"> *{{errorMessage}}</i>
+          {{/if}}
+        </form>
       </div>
-      <div class="form-group">
-        <label> Description/Languages/Keywords:
-          <textarea class="form-control" name="description" cols="30" rows="4"></textarea>
-        </label>
-      </div>
-      <div class="form-group">
-        <label> Repository:
-          <input class="form-control" type="text" name="gitRepo" placeholder="USERNAME/REPO">
-        </label>
-        {{#if errorInput}}
-        <i style="color: red">*{{errorInput}}</i>
-        {{else}} <i>*required</i>
-        {{/if}}
-      </div>
-      <input type="hidden" name="urlType" value="repo">
-      <input type="hidden" name="resType" value="dev">
-      <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
-      <br>
-      {{#if errorMessage}}
-      <i style="color: red"> *{{errorMessage}}</i>
-      {{/if}}
-    </form>
+    </div>
   </div>
 </div>

@@ -1,49 +1,54 @@
 <br>
-<hr>
+<div class="form-page">
+<center><h3>NEW Development Resource</h3></center>
 
+  <div class="form-icon-flex">
 
-<h2>NEW WEB LINK DEV:</h2>
-<div class="row">
-  <div class="col-md-6">
-    <form class="add-form" action="/dev/newLink/add" method="POST">
-      <div class="form-group">
-        <label> Main Topic:
-          <input class="form-control" type="text" name="lang">
-        </label>
-        <i>*required</i>
+  <img class="form-icon" src="/images/weblink.png" alt="web link icon">
+
+      <div class="row form-row">
+        <div class="col-md-12">
+        <form class="add-form" action="/dev/newLink/add" method="POST">
+          <div class="form-group">
+            <label> Main Topic:
+              <input class="form-control" type="text" name="lang">
+            </label>
+            <i>*required</i>
+          </div>
+          <div class="form-group">
+            <label> Sub Topic:
+              <input type="text" name="topic" class="form-control">
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Resource Title:
+              <input type="text" name="title" class="form-control" />
+            </label>
+            <i>*required</i>
+          </div>
+          <div class="form-group">
+            <label> Description/Keywords/#hashtags:
+              <textarea class="form-control" name="description" cols="30" rows="4"></textarea>
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Webpage Url:
+              <input class="form-control" type="text" name="webUrl">
+            </label>
+            {{#if errorInput}}
+            <i style="color: red">*{{errorInput}}</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+          </div>
+          <input type="hidden" name="urlType" value="weblink">
+          <input type="hidden" name="resType" value="dev">
+          <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
+          <br>
+          {{#if errorMessage}}
+          <i style="color: red"> *{{errorMessage}}</i>
+          {{/if}}
+        </form>
       </div>
-      <div class="form-group">
-        <label> Sub Topic:
-          <input type="text" name="topic" class="form-control">
-        </label>
-      </div>
-      <div class="form-group">
-        <label>Resource Title:
-          <input type="text" name="title" class="form-control" />
-        </label>
-        <i>*required</i>
-      </div>
-      <div class="form-group">
-        <label> Description/Keywords/#hashtags:
-          <textarea class="form-control" name="description" cols="30" rows="4"></textarea>
-        </label>
-      </div>
-      <div class="form-group">
-        <label> Webpage Url:
-          <input class="form-control" type="text" name="webUrl">
-        </label>
-        {{#if errorInput}}
-        <i style="color: red">*{{errorInput}}</i>
-        {{else}} <i>*required</i>
-        {{/if}}
-      </div>
-      <input type="hidden" name="urlType" value="weblink">
-      <input type="hidden" name="resType" value="dev">
-      <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
-      <br>
-      {{#if errorMessage}}
-      <i style="color: red"> *{{errorMessage}}</i>
-      {{/if}}
-    </form>
+    </div>
   </div>
 </div>

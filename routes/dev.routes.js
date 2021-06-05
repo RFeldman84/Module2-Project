@@ -194,7 +194,7 @@ router.post("/github-users",routeGuard, (req, res) => {
 	.sort({ createdAt: -1 })
 	.then(gitUsersDB => {
 		console.log("gitUsers", gitUsersDB)
-		res.render("dev/github-users", { gitUsersDB, errorInput: "Please input username", ...req.body })
+		res.render("dev/github-users.hbs", { gitUsersDB, errorInput: "Please input username", ...req.body })
 	})
     return;
   }
@@ -214,7 +214,7 @@ router.get("/github-users", routeGuard, (req, res) => {
 	.sort({ createdAt: -1 })
 	.then(gitUsersDB => {
 		console.log("gitUsers", gitUsersDB)
-		res.render("dev/github-users", { gitUsersDB })
+		res.render("dev/github-users.hbs", { gitUsersDB })
 	})
 	.catch(err => console.log(`Error while getting gituser from the DB: ${err}`))
 })

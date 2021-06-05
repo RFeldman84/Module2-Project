@@ -224,13 +224,13 @@ nav {
 	color: white
 }
 
-.add-form .btn, .file-btn{
+.add-form .btn{
 	background-color: white;
 	color: #1B1395;
 	border-radius: 5px;
 }
 
-.add-form .btn:hover, .file-btn:hover{
+.add-form .btn:hover{
 border:2px solid  #13951B;
 font-weight: bold;
 }

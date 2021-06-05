@@ -26,7 +26,7 @@ favForms.forEach(form => {
 // `<img height="25" src="/images/bookmark-open.png" alt="not bookmarked">`
 
 
-// bookmarked ** remember to change on bookmarks.hbs
+// bookmarked 
 // `<img height="25" src="/images/bookmarked.png" alt="bookmarked">`
 
 
