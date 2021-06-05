@@ -14,7 +14,7 @@
             <i style="color: red">**required</i>
             {{else}} <i>*required</i>
             {{/if}}
-              <input class="form-control" type="text" name="lang" value="{{lang}}" placeholder="java python C# swift XHTML css javascript">
+              <input class="form-control" type="text" name="lang" value="{{lang}}" placeholder="java python C# swift HTML css javascript">
             </label>
           </div>
           <div class="form-group">
@@ -41,7 +41,7 @@
             <label> Image:
               <input type="file" name="image" class="form-control-file"/>
             </label>
-            {{#if errorMessage}} <i>*image JPEG/PNG/SVG/GIF/...(up to 10MB)</i><i style="color: red"> **required</i>
+            {{#if errorMessage}} <i style="color: red"> **required</i>
             {{else}}{{#if errorImg}}
             <i style="color: red">*{{errorImg}}</i>
             {{else}} <i>*image JPEG/PNG/SVG/GIF/...(up to 10MB)</i>

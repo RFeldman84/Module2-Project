@@ -65,68 +65,63 @@ router.get("/newGitRepo", routeGuard,  (req, res) => res.render("dev/new-gitRepo
 
 
 
-const message = "please fill in all required fields"	
-
-// //userId:req.session.currentUser 
+// POST RESOURCES  
+const urlE = "please provide a url"
+const urlInvalid = "please enter valid url including http/https"	
+ 
 //POST PICTURE
 router.post("/newPic/add", routeGuard, fileUploader.single("image"),(req, res) => {
 	const { lang, topic, title, description, urlType, resType } = req.body
 
-	if (!req.file) {
-    res.render("dev/new-pic", {
+	if (!lang || !title ) {
+    res.render("dev/new-pic", {errorMessage: true, ...req.body});
+    return;
+  } else if (!req.file) {
+    res.render("dev/new-pic", { ...req.body,
       errorImg: "Please select image file: JPEG/PNG/SVG/GIF/...(up to 10MB)"
     });
     return;
   }
+
 
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, imageUrl: req.file.path})
 		.then((pic) => {
 			console.log('new pic', pic)
 			res.redirect("/dev")
 		})
-		.catch(err =>{
-			if (err instanceof mongoose.Error.ValidationError) {
-				res.render("dev/new-pic.hbs", { errorMessage: message })
-			} else {
-				console.log("Error while creating a new pic resource: ", err)
-			}
-		})
+		.catch(err => console.log("Error while creating a new pic resource: ", err))
 	});
 
 
-
+// for some reason rest wont work without fileUploader.single("image") so leave in
 // //POST VIDEO
-// correct youtube format "http://youtu.be/"
+
 router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => {
-	const regexYt = /https?:\/\/youtu\.be\/*/gi
+	
 	const { lang, topic, title, description, urlType, resType } = req.body
 
-	if (!req.body.vidUrl) {
-    res.render("dev/new-vid", {
-      errorInput: "Please input a youtube url"
-    });
-    return;
-  }
+	const regexYt = /^(http(s)??\:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([a-zA-Z0-9\-_])+/
+  const urlYe = req.body.vidUrl.replace(".be/", "be.com/embed/").replace('watch?v=',"embed/")
 
-	if (!regexYt.test(req.body.vidUrl)){
-		return res.render("code/new-vid", {errorYt: "please follow format https://youtu.be/.."});
+
+	if (!lang || !title ) {
+  return res.render("dev/new-vid", {errorMessage: true, ...req.body})
+  }else if (!req.body.vidUrl) {
+	return res.render("dev/new-vid", {errorUrl: urlE, ...req.body});
+  }
+	
+	if (!regexYt.test(req.body.vidUrl) || (!req.body.vidUrl.indexOf("http://") == 0 && !req.body.vidUrl.indexOf("https://") == 0)){
+		res.render("dev/new-vid", {errorUrl: urlInvalid +` for Youtube`, ...req.body});
+		return;
 	}
 
-
-	let urlYe = req.body.vidUrl.replace(".be/", "be.com/embed/")
 
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, vidUrl:urlYe})
 		.then((vid) =>{ 
 			console.log('new vid', vid)
 			res.redirect("/dev")
 		})
-		.catch(err =>{
-			if (err instanceof mongoose.Error.ValidationError) {
-				res.render("dev/new-vid.hbs", { errorMessage: message })
-			} else {
-					console.log("Error while creating a new vid resource: ", err)
-			}
-		})
+		.catch(err => console.log("Error while creating a new vid resource: ", err))
 });
 
 
@@ -135,25 +130,21 @@ router.post("/newLink/add",routeGuard,fileUploader.single("image"),(req, res) =>
 
 	const { lang, topic, title, description, webUrl, urlType, resType } = req.body
 
-	if (!webUrl) {
-    res.render("dev/new-link", {
-      errorInput: "Please input a webpage url"
-    });
-    return;
-  }
+	if (!lang || !title ) {
+		return res.render("dev/new-link", {errorMessage: true, ...req.body});
+	 } else if (!webUrl) {
+		return res.render("dev/new-link", {errorUrl: urlE, ...req.body});
+	 } else if(webUrl.indexOf("http://") !== 0 && webUrl.indexOf("https://") !== 0){
+		 return res.render("dev/new-link", {errorUrl: urlInvalid, ...req.body});
+	 }
+
 	
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, webUrl})
 		.then((link) => {
 			console.log('new weblink', link)
 			res.redirect("/dev")
 		})
-		.catch(err =>{
-			if (err instanceof mongoose.Error.ValidationError) {
-				res.render("dev/new-link.hbs", { errorMessage: message })
-			} else {
-					console.log("Error while creating a new web link resource: ", err)
-			}
-		})
+		.catch(err => console.log("Error while creating a new web link resource: ", err))
 });
 
 
@@ -161,9 +152,10 @@ router.post("/newLink/add",routeGuard,fileUploader.single("image"),(req, res) =>
 router.post("/newGitRepo/add",routeGuard,fileUploader.single("image"),(req, res) => {
 
 	const { lang, description, gitRepo, urlType, resType } = req.body
-
-	if (!gitRepo) {
-    res.render("dev/new-gitRepo", {
+		if (!lang || (!lang && !gitRepo)) {
+		return res.render("dev/new-gitRepo", {errorMessage: true, ...req.body})
+		}else if (!gitRepo) {
+    res.render("dev/new-gitRepo", { ...req.body,
       errorInput: "Please input username/repo"
     });
     return;
@@ -174,13 +166,7 @@ router.post("/newGitRepo/add",routeGuard,fileUploader.single("image"),(req, res)
 			console.log('new repo', newRepo)
 			res.redirect("/dev")
 		})
-		.catch(err =>{
-			if (err instanceof mongoose.Error.ValidationError) {
-				res.render("dev/new-gitRepo", { errorMessage: message })
-			} else {
-					console.log("Error while creating  new github repo resource: ", err)
-			}
-		})
+		.catch(err => console.log("Error while creating  new github repo resource: ", err))
 });
 
 

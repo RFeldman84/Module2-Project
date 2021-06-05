@@ -43,13 +43,13 @@
             <label> Codepen Url:
             {{#if errorMessage}}
             <i style="color: red">**required</i>
-            {{else}} {{#if errorUrl}}
-            <i style="color: red">**{{errorUrl}}</i>
             {{else}} <i>*required</i>
-            {{/if}}
             {{/if}}
               <input class="form-control" type="text" name="cpUrl" value="{{cpUrl}}" placeholder="https://codepen.io/@user/pen/...">
             </label>
+            {{#if errorUrl}}
+            <i style="color: red">**{{errorUrl}}</i>  
+            {{/if}}
           </div>
           <div hidden class="form-group">
             <input type="radio" name="urlType" value="codepen" checked>

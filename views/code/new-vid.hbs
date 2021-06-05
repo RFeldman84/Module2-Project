@@ -6,7 +6,7 @@
 
     <div class="row form-row">
       <div class="col-md-12">
-        <form class="add-form" action="/languages/newVid/add" method="POST" enctype="multipart/form-data">
+        <form class="add-form" action="/languages/newVid/add" method="POST">
           <div class="form-group">
             <label> Main Language:
             {{#if errorMessage}}
@@ -40,13 +40,13 @@
             <label> YouTube Url:
             {{#if errorMessage}}
             <i style="color: red">**required</i>
-            {{else}} {{#if errorUrl}}
-            <i style="color: red">**{{errorUrl}}</i>
             {{else}} <i>*required</i>
             {{/if}}
-            {{/if}}
-              <input class="form-control" type="text" name="vidUrl" placeholder="" value="{{vidUrl}}">
+              <input class="form-control" type="text" name="vidUrl" placeholder="" value="{{vidUrl}}" placeholder="ex. https://youtube/..or.share.menu../youtu.be">
             </label>
+            {{#if errorUrl}}
+            <i style="color: red">**{{errorUrl}}</i>
+            {{/if}}
           </div>
           <input type="hidden" name="urlType" value="video">
           <input type="hidden" name="resType" value="code">

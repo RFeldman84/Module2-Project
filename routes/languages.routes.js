@@ -90,10 +90,6 @@ router.post("/newPic/add", routeGuard, fileUploader.single("image"),(req, res) =
 
 
 
-
-
-//  validator for URL format http://
-
 // for some reason rest wont work without fileUploader.single("image") so leave in
 // //POST WEBLINK
 router.post("/newLink/add",routeGuard,(req, res) => {
@@ -107,6 +103,7 @@ router.post("/newLink/add",routeGuard,(req, res) => {
   } else if(webUrl.indexOf("http://") !== 0 && webUrl.indexOf("https://") !== 0){
 		return res.render("code/new-link", {errorUrl: urlInvalid, ...req.body});
 	}
+
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, webUrl})
 	.then(() => {
 		res.redirect("/languages")
@@ -129,12 +126,11 @@ router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => 
 	if (!lang || !title ) {
   return res.render("code/new-vid", {errorMessage: true, ...req.body})
   }else if (!req.body.vidUrl) {
-   return res.render("code/new-vid", {errorUrl: urlE, ...req.body});
-    
+  return res.render("code/new-vid", {errorUrl: urlE, ...req.body});
   }
 	
 	if (!regexYt.test(req.body.vidUrl) || (!req.body.vidUrl.indexOf("http://") == 0 && !req.body.vidUrl.indexOf("https://") == 0)){
-		res.render("code/new-vid", {errorUrl: urlInvalid, ...req.body});
+		res.render("code/new-vid", {errorUrl: urlInvalid +` for Youtube`, ...req.body});
 		return;
 	}
 
@@ -158,7 +154,7 @@ router.post("/newPen/add",routeGuard,fileUploader.single("image"),(req, res) => 
   }else if (!req.body.cpUrl) {
    return res.render("code/new-pen", {errorUrl: urlE, ...req.body});
   } else if(req.body.cpUrl.indexOf("https://codepen.io/") !== 0 ){
-	return  res.render("code/new-pen", {errorUrl: urlInvalid, ...req.body})
+	return  res.render("code/new-pen", {errorUrl: urlInvalid +` for Codepen`, ...req.body})
 	 
 	}
 
@@ -188,7 +184,7 @@ router.post("/newReplit/add",routeGuard,fileUploader.single("image"),(req, res) 
 	if (!req.body.riUrl) {
    return res.render("code/new-replit", {errorUrl: urlE, ...req.body});
   } else if (req.body.riUrl.indexOf("https://replit.com/@") !== 0 ){
-		return res.render("code/new-replit", {errorUrl: urlInvalid, ...req.body});
+		return res.render("code/new-replit", {errorUrl: urlInvalid +` for Replit`, ...req.body});
 	}
 
 

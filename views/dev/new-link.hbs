@@ -11,41 +11,49 @@
         <form class="add-form" action="/dev/newLink/add" method="POST">
           <div class="form-group">
             <label> Main Topic:
-              <input class="form-control" type="text" name="lang">
+            {{#if errorMessage}}
+            <i style="color: red">**required</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+              <input class="form-control" type="text" name="lang" value="{{lang}}">
             </label>
-            <i>*required</i>
           </div>
           <div class="form-group">
             <label> Sub Topic:
-              <input type="text" name="topic" class="form-control">
+              <input type="text" name="topic" class="form-control" value="{{topic}}">
             </label>
           </div>
           <div class="form-group">
             <label>Resource Title:
-              <input type="text" name="title" class="form-control" />
+            {{#if errorMessage}}
+            <i style="color: red">**required</i>
+            {{else}} <i>*required</i>
+            {{/if}}
+              <input type="text" name="title" class="form-control" value="{{title}}" />
             </label>
-            <i>*required</i>
           </div>
           <div class="form-group">
             <label> Description/Keywords/#hashtags:
-              <textarea class="form-control" name="description" cols="30" rows="4"></textarea>
+              <textarea class="form-control" name="description" cols="30" rows="4">{{description}}</textarea>
             </label>
           </div>
           <div class="form-group">
             <label> Webpage Url:
-              <input class="form-control" type="text" name="webUrl">
-            </label>
-            {{#if errorInput}}
-            <i style="color: red">*{{errorInput}}</i>
+            {{#if errorMessage}}
+            <i style="color: red">**required</i>
+            {{else}} {{#if errorUrl}}
+            <i style="color: red">**{{errorUrl}}</i>
             {{else}} <i>*required</i>
             {{/if}}
+            {{/if}}
+              <input class="form-control" type="text" name="webUrl" value="{{webUrl}}" placeholder="http(s)://..." >
+            </label>   
           </div>
           <input type="hidden" name="urlType" value="weblink">
           <input type="hidden" name="resType" value="dev">
           <button type="submit" class="btn btn-primary">ADD RESOURCE</button>
-          <br>
-          {{#if errorMessage}}
-          <i style="color: red"> *{{errorMessage}}</i>
+          {{#if errorMessage}} 
+          <i style="color: red">*please fill in ALL required fields</i>
           {{/if}}
         </form>
       </div>

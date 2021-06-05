@@ -40,13 +40,13 @@
             <label> Replit Url:
             {{#if errorMessage}}
             <i style="color: red">**required</i>
-            {{else}} {{#if errorUrl}}
-            <i style="color: red">**{{errorUrl}}</i>
             {{else}} <i>*required</i>
-            {{/if}}
             {{/if}}
               <input class="form-control" type="text" name="riUrl" value="{{riUrl}}">
             </label>
+            {{#if errorUrl}}
+            <i style="color: red">**{{errorUrl}}</i>
+            {{/if}}
           </div>
           <input type="hidden" name="urlType" value="replit">
           <input type="hidden" name="resType" value="code">

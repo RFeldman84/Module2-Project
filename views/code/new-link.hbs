@@ -12,7 +12,7 @@
       <form  class="add-form" action="/languages/newLink/add" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label> Main Language: 
-              {{#if errorMessage}}
+            {{#if errorMessage}}
             <i style="color: red">**required</i>
             {{else}} <i>*required</i>
             {{/if}}
@@ -48,10 +48,8 @@
             {{else}} <i>*required</i>
             {{/if}}
             {{/if}}
-              <input class="form-control" type="text" name="webUrl" placeholder="http://..."  value="{{webUrl}}">
+              <input class="form-control" type="text" name="webUrl" placeholder="http(s)://..."  value="{{webUrl}}">
             </label>
-            <br>
-        
           </div>
           <input type="hidden" name="urlType" value="weblink">
           <input type="hidden" name="resType" value="code">
