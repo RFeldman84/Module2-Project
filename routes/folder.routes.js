@@ -50,22 +50,14 @@ router.get("/bookmarks", routeGuard, (req, res, next) => {
 /// POST SEE FOLDER
 router.post("/bookmarks/new-folder", routeGuard, (req, res, next) => {
 	const { name } = req.body
-
-
 	Folder.create({ name, userId: req.session.currentUser })
-		.then(() => res.redirect("/bookmarks"))
-		.catch(err => {
-     
-			if (err instanceof mongoose.Error.ValidationError) {
-				// res.render("folder/bookmarks.hbs", {
-				// 	errorMessage: "enter a folder name"
-				// })
-        res.redirect('back')
-			} else {
-				console.log("Error while creating a new folder: ", err)
-			}
+		.then(newFolder =>{ 
+			console.log(newFolder)
+			res.redirect("back")
 		})
+		.catch(err => console.log("Error while creating a new folder: ", err))
 })
+
 
 //// DELETE
 
@@ -74,17 +66,6 @@ router.post("/bookmarks/folder/:id/delete", routeGuard, (req, res, next) => {
 		.then(() => res.redirect(`back`))
 		.catch(err => console.log(`Error while deleting folder from DB: ${err}`))
 })
-
-//// UPDATE GET FORM
-// router.get('/bookmarks/folder/:id/edit', routeGuard, (req, res, next) => {
-//   Folder.findById(req.params.id)
-//   .then((foundFolder) => {
-//     console.log("found code: ", foundFolder);
-//     res.render("folder/update-form", {folder: foundFolder})
-  
-//     })
-//   .catch((err) => console.log(`Error while getting  resource from DB for editing: ${err}`));
-// })
 
 
 
@@ -99,13 +80,10 @@ const {name} = req.body
   .catch((err) => console.log(`Error while saving updated folder in DB : ${err}`));
 });
 
-// name: { type: String, uppercase: true, required: true, trim: true },
-// 		resources: [{ type: Schema.Types.ObjectId, ref: "Code" }],
-// 		userId: { type: Schema.Types.ObjectId, ref: "User" },
+
 
 
 // GET ORIGINAL pick folder for resource
-
 
 router.get("/bookmarks/choose-folders/:resId", routeGuard, (req, res, next) => {
   Code.findById(req.params.resId)
@@ -147,33 +125,6 @@ router.get('/bookmarks/addRemove/:folderId/:resId', routeGuard, (req, res, next)
 
 // // get for  BOOKMARKS in a folder
 
-// is this redundant?
-// router.get('/bookmarks/folder/:folderId',  routeGuard, (req, res, next) => {
-//   Folder.findById(req.params.folderId).populate('resources')
-//   .then((foundFolder) => {
-//     console.log("found folder: ", foundFolder);
-// 		// logic if resource.fav === "yes" return resource
-// 		// WORKS*
-// 		const bookmarked = foundFolder.resources.map(resource => {
-// 			resource.bookmark = resource.fav == "yes"
-// 			console.log("resource", resource.fav)
-// 			return resource;
-// 		})
-// 		// logic if resource.fav === "no" pull() that resource
-// 			// WORKS*
-// 			foundFolder.resources.forEach(resource => {
-// 				if(resource.fav == "no")
-// 				foundFolder.resources.pull(resource._id)
-// 				foundFolder.save()
-// 			})
-// 			console.log('updated res', foundFolder)
-//     res.render("folder/folder.hbs", {foundFolder, bookmarked});
-//     })
-//   .catch((err) => console.log(`Error while getting folder from DB  ${err}`));
-// })
-
-
-/// refactor do i need bookmarked if pull works? seems not
 router.get('/bookmarks/folder/:folderId',  routeGuard, (req, res, next) => {
   Folder.findById(req.params.folderId).populate('resources')
   .then((foundFolder) => {
