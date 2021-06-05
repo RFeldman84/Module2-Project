@@ -55,7 +55,7 @@ router.post("/bookmarks/new-folder", routeGuard, (req, res, next) => {
 	Folder.create({ name, userId: req.session.currentUser })
 		.then(() => res.redirect("/bookmarks"))
 		.catch(err => {
-      // how to render page without dissapear with error message.. can combine with above?
+     
 			if (err instanceof mongoose.Error.ValidationError) {
 				// res.render("folder/bookmarks.hbs", {
 				// 	errorMessage: "enter a folder name"
@@ -76,15 +76,15 @@ router.post("/bookmarks/folder/:id/delete", routeGuard, (req, res, next) => {
 })
 
 //// UPDATE GET FORM
-router.get('/bookmarks/folder/:id/edit', routeGuard, (req, res, next) => {
-  Folder.findById(req.params.id)
-  .then((foundFolder) => {
-    console.log("found code: ", foundFolder);
-    res.render("folder/update-form", {folder: foundFolder})
+// router.get('/bookmarks/folder/:id/edit', routeGuard, (req, res, next) => {
+//   Folder.findById(req.params.id)
+//   .then((foundFolder) => {
+//     console.log("found code: ", foundFolder);
+//     res.render("folder/update-form", {folder: foundFolder})
   
-    })
-  .catch((err) => console.log(`Error while getting  resource from DB for editing: ${err}`));
-})
+//     })
+//   .catch((err) => console.log(`Error while getting  resource from DB for editing: ${err}`));
+// })
 
 
 

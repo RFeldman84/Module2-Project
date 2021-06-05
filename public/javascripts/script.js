@@ -32,13 +32,16 @@ favForms.forEach(form => {
 
 
 
+const editBtn = document.querySelectorAll(".editF")
+const upForm = document.querySelectorAll('.upF')
 
-// window.addEventListener('load', ()=>{
-//  const upF = document.querySelector('.upF')
-//  upF.classList.toggle('hide', true)
-//   const editF = document.querySelector('.editF')
-//   editF.addEventListener('click', ()=>{
-//     upF.classList.toggle('hide')
-//   })
-// })
 
+for(let i = 0; i< editBtn.length;i++){
+	editBtn[i].addEventListener('click', (e)=>{
+		console.log(`clicked`, e.target)
+		upForm[i].classList.toggle('hide')
+		console.log(upForm[i])
+	})
+}
+	
+	

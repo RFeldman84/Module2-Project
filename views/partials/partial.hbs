@@ -1,78 +1,114 @@
 
-
     <div class="col-9 mb-5">
-      <div class="card">
-        {{!-- CARD HEADER --}}
-        <div class="card-header py-1 ">
+    {{#unless gitRepo}}
+    <div class="card justify-content-center">
+      {{!-- CARD HEADER --}}
+      <div class="card-header py-1 ">
 
-          <div class="justify-content-left">
-            <form action="/{{id}}/delete" method="POST">
-              <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
-                  alt="delete"></button>
-            </form>
-          </div>
-          {{#if topic}}
-          <h5 class="card-text text-center mb-0">{{lang}}: <b><i>{{topic}}</i></b></h5>
-          <div></div>
-
-          {{else}}
-          <h5 class="card-text text-center mb-0">{{lang}} </h5>
-          <div></div>
-
-          {{/if}}
+        <div class="justify-content-left">
+          <form action="/{{id}}/delete" method="POST">
+            <button class="none-btn"><img height="25" src="/images/delete.png"
+                alt="delete"></button>
+          </form>
         </div>
+        {{#if topic}}
+        <h5 class="card-text text-center mb-0">{{lang}}: <b><i>{{topic}}</i></b></h5>
+        <div></div>
 
-        {{!-- CARD BODY TEXT --}}
-        <div class="card-body text-center py-3">
-          <h6 class="card-subtitle"><u>{{title}}</u></h6>
-          {{#if description}}
-          <p class="card-text ">{{description}}</p>
-          {{/if}}
-        </div>
+        {{else}}
+        <h5 class="card-text text-center mb-0">{{lang}} </h5>
+        <div></div>
+        {{/if}}
+      </div>
 
-        {{#if webUrl}}
-        <div class="card-body" style="border: 2px solid purple;">
-          <h6 class="text-center"><a href="{{webUrl}}" target="_blank">{{webUrl}}</a></h6>
-        </div>
+      {{!-- CARD BODY TEXT --}}
 
-        {{else}} {{#if imageUrl}}
-        <img src="{{imageUrl}}" alt="{{title}}" class="resImg">
+      <div class="card-body text-center py-3">
+        <h6 class="card-subtitle"><u>{{title}}</u></h6>
+        {{#if description}}
+        <p class="card-text ">{{description}}</p>
+        {{/if}}
+      </div>
+      {{/unless}}
 
-        {{else}} {{#if vidUrl}}
-        <div class=" embed-responsive embed-responsive-21by9">
-          <iframe class="embed-responsive-item" src="{{vidUrl}}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen="true"></iframe>
-        </div>
+      {{#if webUrl}}
+      <div class="card-body" >
+        <h6 class="text-center"><a href="{{webUrl}}" target="_blank">{{webUrl}}</a></h6>
+      </div>
 
-        {{else}} {{#if cpUrl}}
+      {{else}} {{#if imageUrl}}
+      <img src="{{imageUrl}}" alt="{{title}}" class="resImg">
+
+      {{else}} {{#if vidUrl}}
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="{{vidUrl}}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen="true"></iframe>
+      </div>
+
+      {{else}} {{#if cpUrl}}
         <div class="embed-responsive embed-responsive-21by9">
           <iframe class="embed-responsive-item" src="{{cpUrl}}?theme-id=dark&default-tab=html,result" loading="lazy"
             allowtransparency="true" allowfullscreen="true"></iframe>
         </div>
 
-        {{else}} {{#if riUrl}}
-        <div class="embed-responsive embed-responsive-21by9 ">
-          <iframe class="embed-responsive-item" src="{{riUrl}}?lite=true"></iframe>
+      {{else}} {{#if riUrl}}
+      <div class="embed-responsive embed-responsive-21by9 ">
+        <iframe class="embed-responsive-item" src="{{riUrl}}?lite=true"></iframe>
+      </div>
+      
+
+       {{!-- {{else}} {{#if codeSnip}}
+        <div class="px-3" style="background-color:black">
+          <p class="card-text">
+          <pre style="color:yellow;">{{description}}</pre>
+          </p>
+        </div> --}}
+
+      {{else}} {{#if gitRepo}}
+      
+      <div class="card text-center justify-content-center">
+        <div class="card-header py-1 d-flex">
+
+          <div class="justify-content-left">
+            <form action="/{{id}}/delete" method="POST">
+              <button class="none-btn"><img height="25" src="/images/delete.png"
+                  alt="delete"></button>
+            </form>
+          </div>
+          <h5 class="card-text text-center mb-0">{{lang}} </h5>
+          <div></div>
         </div>
+        <div class="card-body">
+          <object type="image/svg+xml" 
+            data="https://gh-card.dev/repos/{{gitRepo}}.svg?fullname=&link_target=_blank"></object>
+        </div>
+
+        <p class="card-text text-center">{{description}}</p>
+
+
         {{/if}}
         {{/if}}
         {{/if}}
         {{/if}}
         {{/if}}
+        {{/if}}
+         {{!-- {{/if}} --}}
+        {{!-- if going to do codeSnip --}}
 
         {{!-- CARD FOOTER--}}
         <div class="bottomCard card-footer py-0">
           {{!-- date --}}
           <div><i>{{date}}</i></div>
           {{!-- edit --}}
-        <div><button style="background:none; border:none;"><a href="/{{_id}}/edit"><img height="25" src="/images/edit.png" alt="edit"></a></button></div>
+          <div><button class="none-btn"><a href="/{{_id}}/edit"><img height="25"
+                  src="/images/edit.png" alt="edit"></a></button></div>
 
           {{!-- bookmarks --}}
           <div>
             <form class="fav-form" action="/{{id}}/bm" method="POST">
-              <input type="hidden" name="fav" value="{{fav}}">
-              <button id="fav-btn" style="background:none; border:none" class="bookBtn"><img height="25"
+              <input hidden checked type="radio" name="fav" value="{{fav}}">
+              <button id="fav-btn"  class="bookBtn none-btn"><img height="25"
                   src="/images/bookmark-open.png" alt="not bookmarked"></button>
             </form>
           </div>
@@ -81,10 +117,4 @@
         {{!-- end each card --}}
       </div>
     </div>
-    {{!-- row inside makes them one row no matter what col-size--}}
-    {{!--
-  </div> --}}
-  {{/each}}
-  {{!-- row outside this makes them fit multiple col-size--}}
-</div> 
 

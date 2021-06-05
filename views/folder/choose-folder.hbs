@@ -8,10 +8,10 @@
  <label for="foldersLabel"><h4><u>FOLDERS</u></h4></label>
   <div class="list-box">
     {{#each foldersFromDB}}
-    <h5>{{this.name}} <button><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}} remove {{else}} add {{/if}}</a></button></h5>
+    <h5>{{this.name}} <button class="blue-btn"><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}} remove {{else}} add {{/if}}</a></button></h5>
     {{/each}}
   </div>
   <br>
 
-{{!-- if choose somthing browser back does not go all the way back since above link and this link will loose place... need logic and right routing--}}
-  <h6><a href="/bookmarks">Back</a></h6>
+
+  <h6><a style="background-color: #1B1395 " href="/bookmarks">Back</h6></a>

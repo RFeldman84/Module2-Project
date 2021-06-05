@@ -7,19 +7,60 @@ body {
 	height: 100vh;
 }
 
+/* #0269D9*/
+/* #0E46B3 */
+
+/* #1B1395 */
+/*#951B13*/
+/* #13951B*/
+
+
 a {
-	color: #00b7ff;
+	/* color: #00b7ff; */
+	color: white;
 	text-decoration: none;
 }
 
 a:hover{
 	text-decoration: none;
+	color: white;
+	font-weight: bold;
 }
 
 .hide{
 	display:none;
 }
+.card a{
+	color:#1B1395;
+}
 
+.red-btn{
+	background-color: #951B13;
+	color: white;
+}
+.red-btn:hover, .red-btn a:hover, .folderTxt:hover{
+	color: #1B1395;
+	font-weight: bold;
+}
+
+.blue-btn{
+	background-color: #1B1395;
+	color: white;
+}
+
+
+.blue-btn:hover, .blue-btn a:hover {
+	color: #13951B;
+}
+
+
+.none-btn{
+	border: none;
+	background: none;
+}
+/* #1B1395 */
+/*#951B13*/
+/* #13951B*/
 
 /* NAV */
 nav {
@@ -30,22 +71,18 @@ nav {
 	top: 0;
 	left: 0;
 	width: 100vw;
-	border-bottom: 1px solid darkslategrey;
-	background-color: slategrey;
+	border-bottom: 2px solid #13951B;
+	background-color: #1B1395;
 	height: 4vw;
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 0 5vw;
 	z-index: 3;
+	box-shadow:2px 2px 3px #13951B;
+	color: white;
+	border-radius: 0 0 0 5px;
 }
 
-
-/* nav div:nth-child(1) {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 10vw;
-} */
 
 
 
@@ -140,8 +177,6 @@ nav {
 
 
 
-
-
 .folderTxt {
   position: absolute;
   top: 60%;
@@ -150,11 +185,19 @@ nav {
 	font-size:100%;
 	text-align: center;
 	font-weight: bold;
+	color: white;
+}
+
+.folderTxt:hover{
+
 }
 
 
 /* forms */
 
+/* #1B1395 */
+/*#951B13*/
+/* #13951B*/
 
 .form-page{
 	display: flex;
@@ -173,11 +216,23 @@ nav {
 .add-form{
 	display: flex;
 	flex-direction: column;
-	border: 2px solid #0269D9;
-	background-color: #00b7ffa1;
+	border: 2px solid   #13951B;
+	background-color: #1B1395;
 	border-radius: 20px;
 	padding: 25px;
 	align-items: center;
+	color: white
+}
+
+.add-form .btn, .file-btn{
+	background-color: white;
+	color: #1B1395;
+	border-radius: 5px;
+}
+
+.add-form .btn:hover, .file-btn:hover{
+border:2px solid  #13951B;
+font-weight: bold;
 }
 
 .form-icon{
@@ -207,7 +262,7 @@ height: 15vw;
 
 
 .add-form input.form-control, .add-form textarea.form-control{
-	background-color: #e6dcdc78;
+	color: black;
 	border-radius: 1.25rem;
 }
 

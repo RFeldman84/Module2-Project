@@ -3,7 +3,7 @@
 <br>
 {{#if userInSession.cwName}}
 <div>
-  <button style="background:none; border:none"><a href="/languages/my-katas"><img width="50vw"
+  <button  class="none-btn"><a href="/languages/my-katas"><img width="50vw"
         src="/images/codewars-logo.png" alt="codewars logo"></a></button>
 </div>
 {{else}}
@@ -11,7 +11,7 @@
   <form action="/languages/add-cw-user" method="POST" class="form-inline row">
     <div class="form-group ">
       <input required type="text" name="cwName" placeholder="Codewars UserName?" class="form-control-sm">
-      <button type="submit" class="btn-sm btn-primary">ADD</button>
+      <button type="submit" class="btn btn-sm blue-btn btn-primary">ADD</button>
     </div>
   </form>
 </div>
@@ -28,7 +28,7 @@
   <form action="/languages" method="GET" class="form-inline row justify-content-center">
     <div class="form-group">
       <input type="text" name="search" placeholder="Search Resources..." class=" form-control-lg">
-      <button type="submit" class="btn-lg btn-primary ">yoooogle!</button>
+      <button type="submit" class="btn btn-lg blue-btn btn-primary">Search!</button>
     </div>
   </form>
 </div>
@@ -47,15 +47,14 @@
 <br>
 <div class="row justify-content-center">
   {{#each langAll}}
-  {{!-- <div class="row justify-content-center"> --}}
-    <div class="col-8 mb-5">
+    <div class="col-9 mb-5">
       <div class="card">
         {{!-- CARD HEADER --}}
         <div class="card-header py-1 ">
 
           <div class="">
             <form action="/{{id}}/delete" method="POST">
-              <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
+              <button class="none-btn"><img height="25" src="/images/delete.png"
                   alt="delete"></button>
             </form>
           </div>
@@ -80,7 +79,7 @@
 
 
         {{#if webUrl}}
-        <div class="card-body" style="border: 2px solid purple;">
+        <div class="card-body" >
           <h6 class="text-center"><a href="{{webUrl}}" target="_blank">{{webUrl}}</a></h6>
         </div>
 
@@ -125,14 +124,14 @@
           {{!-- date --}}
           <div><i>{{date}}</i></div>
           {{!-- edit --}}
-          <div><button style="background:none; border:none;"><a href="/{{_id}}/edit"><img height="25"
+          <div><button class="none-btn"><a href="/{{_id}}/edit"><img height="25"
                   src="/images/edit.png" alt="edit"></a></button></div>
 
           {{!-- bookmarks --}}
           <div>
             <form class="fav-form" action="/{{id}}/bm" method="POST">
               <input type="hidden" name="fav" value="{{fav}}">
-              <button id="fav-btn" style="background:none; border:none" class="bookBtn"><img height="25"
+              <button id="fav-btn" class="none-btn bookBtn"><img height="25"
                   src="/images/bookmark-open.png" alt="not bookmarked"></button>
             </form>
           </div>
@@ -141,12 +140,10 @@
         {{!-- end each card --}}
       </div>
     </div>
-    {{!-- row inside makes them one row no matter what col-size--}}
-    {{!--
-  </div> --}}
   {{/each}}
-  {{!-- row outside this makes them fit multiple col-size--}}
 </div>
+
+
 
 {{!-- <div class="row justify-content-center">
   {{#each langAll}}
@@ -159,28 +156,3 @@
 
 
 
-{{!-- BOOTSTRAP docs iFrame object embeds--}}
-{{!-- <div class="embed-responsive embed-responsive-21by9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-</div> --}}
-
-
-<!-- 21:9 aspect ratio -->
-{{!-- <div class="embed-responsive embed-responsive-21by9">
-  <iframe class="embed-responsive-item" src="..."></iframe>
-</div> --}}
-
-<!-- 16:9 aspect ratio -->
-{{!-- <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="..."></iframe>
-</div> --}}
-
-<!-- 4:3 aspect ratio -->
-{{!-- <div class="embed-responsive embed-responsive-4by3">
-  <iframe class="embed-responsive-item" src="..."></iframe>
-</div> --}}
-
-<!-- 1:1 aspect ratio -->
-{{!-- <div class="embed-responsive embed-responsive-1by1">
-  <iframe class="embed-responsive-item" src="..."></iframe>
-</div> --}}

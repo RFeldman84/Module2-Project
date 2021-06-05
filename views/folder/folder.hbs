@@ -11,8 +11,6 @@
 
 <div class="row justify-content-center">
   {{#each foundFolder.resources}} 
-  {{!-- {{#each bookmarked}} 
-  {{#if bookmark}} --}}
   <div class="col-9 mb-5">
     {{#unless gitRepo}}
     <div class="card ">
@@ -21,7 +19,7 @@
 
         <div class="justify-content-left">
           <form action="/{{id}}/delete" method="POST">
-            <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
+            <button class="none-btn"><img height="25" src="/images/delete.png"
                 alt="delete"></button>
           </form>
         </div>
@@ -49,7 +47,7 @@
       {{/unless}}
 
       {{#if webUrl}}
-      <div class="card-body" style="border: 2px solid purple;">
+      <div class="card-body">
         <h6 class="text-center"><a href="{{webUrl}}" target="_blank">{{webUrl}}</a></h6>
       </div>
 
@@ -76,10 +74,10 @@
 
       {{else}} {{#if gitRepo}}
       <div class="card text-center justify-content-center">
-        <div class="card-header py-1" style="display: flex;">
+        <div class="card-header py-1 d-flex">
           <div class="justify-content-left">
             <form action="/{{id}}/delete" method="POST">
-              <button style="background:none; border:none;"><img height="25" src="/images/delete.png"
+              <button class="none-btn"><img height="25" src="/images/delete.png"
                   alt="delete"></button>
             </form>
           </div>
@@ -87,7 +85,7 @@
             {{!-- link to folder choose form --}}
         <div>
           <form action="/bookmarks/choose-folders/{{_id}}" method="get">
-            <button style="background:none; border:none;"><img height="25" src="/images/folder.png"
+            <button class="none-btn"><img height="25" src="/images/folder.png"
                 alt="folder"></button>
           </form>
         </div>
@@ -110,15 +108,15 @@
           {{!-- date --}}
           <div><i>{{date}}</i></div>
           {{!-- edit --}}
-          <div><button style="background:none; border:none;"><a href="/{{_id}}/edit"><img height="25"
+          <div><button class="none-btn"><a href="/{{_id}}/edit"><img height="25"
                   src="/images/edit.png" alt="edit"></a></button></div>
 
           {{!-- bookmarks --}}
           <div>
             <form action="/{{id}}/bm" method="POST">
               <input hidden checked type="radio" name="fav" value="{{fav}}">
-              <button class="bookBtn"
-                style="background:none; border:none; object-fit: contain; object-position: center;"><img
+              <button class="bookBtn none-btn"
+                style="object-fit: contain; object-position: center;"><img
                   height="25" src="/images/bookmarked.png" alt="logo"></button>
             </form>
           </div>
@@ -127,7 +125,6 @@
         {{!-- end each card --}}
       </div>
     </div>
-    {{!-- {{/if}} --}}
     {{/each}}
     
   </div>

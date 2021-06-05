@@ -6,19 +6,15 @@
   {{!-- add new user--}}
 
   
-      <form action="/dev/newGitUser/add" method="POST">
+      <form action="/dev/github-users" method="POST">
         <div class="form-group">
-          <input class="form-control-sm" type="text" name="gitUser" placeholder="enter username" required>
+          <input class="form-control-sm" type="text" name="gitUser" placeholder="enter username">
+          <input type="hidden" name="resType" value="gituser">
+          <button type="submit"  class="btn btn-sm btn-primary blue-btn">ADD</button>
         {{#if errorInput}}
         <i style="color: red">*{{errorInput}}</i>
         {{/if}}
-          <input type="hidden" name="resType" value="gituser">
-          <button type="submit"  class="btn-sm btn-primary">ADD</button>
-          {{#if errorMessage}}
-          <i style="color: red">*{{errorMessage}}</i>
-          {{/if}}
       </form>
-   
 </center>
 <br>
 
@@ -29,7 +25,7 @@
 {{#each gitUsersDB}}
  <div class="card " style="border:none">
     <form action="/{{id}}/delete" method="POST">
-    <button style="background:none; border:none;"><img height="25" src="/images/delete.png" alt="delete"></button>
+    <button class="none-btn"><img height="25" src="/images/delete.png" alt="delete"></button>
     </form>
     <div class="github-card" data-github="{{gitUser}}" data-width="220"  data-theme="medium" data-target="blank">
     </div>

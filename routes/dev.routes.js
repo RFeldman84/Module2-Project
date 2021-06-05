@@ -61,7 +61,7 @@ router.get("/newGitRepo", routeGuard,  (req, res) => res.render("dev/new-gitRepo
 
 //GITHUB USERS
 // FORM
-router.get("/newGitUser", routeGuard, (req, res) => res.render("dev/new-gitUser"))
+//on user page
 
 
 
@@ -156,6 +156,7 @@ router.post("/newLink/add",routeGuard,fileUploader.single("image"),(req, res) =>
 		})
 });
 
+
 // //POST GIT REPO
 router.post("/newGitRepo/add",routeGuard,fileUploader.single("image"),(req, res) => {
 
@@ -177,21 +178,24 @@ router.post("/newGitRepo/add",routeGuard,fileUploader.single("image"),(req, res)
 			if (err instanceof mongoose.Error.ValidationError) {
 				res.render("dev/new-gitRepo", { errorMessage: message })
 			} else {
-					console.log("Error while creating a new web link resource: ", err)
+					console.log("Error while creating  new github repo resource: ", err)
 			}
 		})
 });
 
 
 // //POST GIT USER
-router.post("/newGitUser/add",routeGuard, (req, res) => {
+router.post("/github-users",routeGuard, (req, res) => {
 
 	const { gitUser, resType } = req.body
 
 	if (!gitUser) {
-    res.render("dev/new-gitUser", {
-      errorInput: "Please input username"
-    });
+		Code.find({$and:[{ userId: req.session.currentUser._id }, { resType: "gituser"}]})
+	.sort({ createdAt: -1 })
+	.then(gitUsersDB => {
+		console.log("gitUsers", gitUsersDB)
+		res.render("dev/github-users", { gitUsersDB, errorInput: "Please input username", ...req.body })
+	})
     return;
   }
 	
@@ -210,7 +214,7 @@ router.get("/github-users", routeGuard, (req, res) => {
 	.sort({ createdAt: -1 })
 	.then(gitUsersDB => {
 		console.log("gitUsers", gitUsersDB)
-		res.render("dev/github", { gitUsersDB })
+		res.render("dev/github-users", { gitUsersDB })
 	})
 	.catch(err => console.log(`Error while getting gituser from the DB: ${err}`))
 })

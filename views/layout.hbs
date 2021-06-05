@@ -18,8 +18,8 @@
           
       {{#if userInSession}}
       <div class="btn-group">
-        <button type="button" class="btn btn-danger"><a href="/languages">Language Resources</a></button>
-        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+
+        <button type="button" class="btn btn-sm btn-danger red-btn"><a href="/languages">Language Resources</a></button>
+        <button type="button" class="btn btn-sm red-btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+
           <span class="sr-only"></span>
         </button>
         <div class="dropdown-menu">
@@ -35,29 +35,27 @@
       <a href="/bookmarks">Bookmarks</a>
 
       <div class="btn-group">
-        <button type="button" class="btn btn-danger"><a href="/dev">Development Resources</a></button>
-        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+
+        <button type="button" class="btn btn-sm btn-danger red-btn"><a href="/dev">Development Resources</a></button>
+        <button type="button" class="btn btn-sm btn-danger red-btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+
           <span class="sr-only"></span>
         </button>
         <div class="dropdown-menu"> 
-          <div class="dropdown-item"><p>ADD</p></div>
-          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/dev/newPic"><img src="/images/camera.png" height="50px" alt="add picture"></a>
           <a class="dropdown-item" href="/dev/newLink"><img src="/images/weblink.png" height="50px" alt="add web link"></a> 
           <a class="dropdown-item" href="/dev/newVid"><img src="/images/youtube-button.png" height="50px" alt="add youtube video"></a> 
           <div class="dropdown-item git-drop"><img src="/images/github-logo.png" height="50px" alt="add github repo"></div>
           <a class="dropdown-item" href="/dev/newGitRepo">Repo</a>
-          <a class="dropdown-item" href="/dev/newGitUser">User</a>
+          <a class="dropdown-item" href="dev/github-users">User</a>
         </div>
       </div>
 
           {{!-- <a href="/bookmarks">Bookmarks</a> --}}
           <form action="/logout" method="POST">
-            <button type="submit">Logout</button>
+            <button class="btn btn-sm red-btn" type="submit">Logout</button>
           </form>
         {{else}}
           
-          <a href="/">HOME</a>
+         
          <a href="/auth/signup">Signup</a>
           <a href="/auth/login">Login</a>
 
