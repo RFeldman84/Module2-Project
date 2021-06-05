@@ -1,20 +1,29 @@
-<h2>EDIT GITHUB REPO  INFO</h2>
-
-<div class="row">
-  <div class="col-md-6">
-    <form class="add-form" action="/{{foundCode.id}}/edit" method="POST">
-      <div class="form-group">
-        <label> Repo Topic:
-          <input required class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
-        </label>
+{{!-- <h2>EDIT GITHUB REPO  INFO</h2> --}}
+<br>
+<div class="form-page">
+<center><h3>EDIT Github Repository Resource</h3></center>
+  <div class="form-icon-flex">  
+    
+    <img class="form-icon" src="/images/github-logo.png" alt="youtube icon">
+    <div class="row form-row">
+      <div class="col-md-12">
+        <h5 class="text-center">{{foundCode.lang}}: {{foundCode.description}}</h5>
+        <form class="add-form" action="/{{foundCode.id}}/edit" method="POST">
+          <div class="form-group">
+            <label> Repo Topic:
+              <input required class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
+            </label>
+          </div>
+          <div class="form-group">
+            <label> Description/Languages/Keywords:
+              <textarea class="form-control" name="description" cols="30" rows="4">{{foundCode.description}}</textarea>
+            </label>
+          </div>
+          <div class="form-group">
+          <input type="hidden" name="referer" value="{{referer}}">
+          </div>
+          <button type="submit" class="btn btn-primary">UPDATE</button>
       </div>
-      <div class="form-group">
-        <label> Description/Languages/Keywords:
-          <textarea class="form-control" name="description" cols="30" rows="4">{{foundCode.description}}</textarea>
-        </label>
-      </div>
-      <div class="form-group">
-      <input type="hidden" name="referer" value="{{referer}}">
-      </div>
-      <button type="submit" class="btn btn-primary">UPDATE</button>
+    </div>
+  </div>
 </div>
