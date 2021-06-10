@@ -1,30 +1,26 @@
-<hr>
+<br>
+<br>
 
 {{#if userInSession.cwName}}
 <div class="row justify-content-center">
 <img  src="https://www.codewars.com/users/{{userInSession.cwName}}/badges/large" alt="code wars badge">
 </div>
-<h2 class="text-center"><u>{{userInSession.username}}'s Codewars Katas</u></h2>
+<center><h4 class="text-center head"><u>{{userInSession.username}}'s Codewars Katas</u></h4></center>
 <br>
 <br>
 
+<div class="cw-container">
 {{#each cw}}
-<h5>
-  <li><a target="_blank" href="https://www.codewars.com/kata/{{slug}}">{{name}}</a></li>
-</h5>
+<div class="cw">
+<h5><a target="_blank" href="https://www.codewars.com/kata/{{slug}}">{{name}}</a></li></h5>
 Language(s) Completed in:
 {{#each completedLanguages}} <p>{{this}}</p>
 {{/each}}
-{{!-- how to manipulate date format in axios call?? --}}
 <p>Completed on: {{completedAt}}</p>
-<hr>
+</div>
 {{/each}}
-
-{{else}} 
-<p>no username given</p>
-
 {{/if}}
-
+</div>
 
 
 

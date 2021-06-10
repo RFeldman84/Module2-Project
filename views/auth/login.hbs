@@ -1,19 +1,33 @@
-<h2>Login</h2>
 
-<form action="/login" method="POST">
 
-    <label> Email:
-        <input type="email" name="email">
-    </label>
-    <label> Password:
-        <input type="password" name="userPassword">
-    </label>
+<div class="form-page ">
+    <div class="log-icon-flex">
+        <div>
+            <h2 class="head">Login</h2>
+        </div>
 
-    <button type="submit">Login</button>
+        <div class="row form-row">
+            <div class="col-md-12">
 
-    <br />
-    {{#if errorMessage}}
-        {{errorMessage}}
-    {{/if}}
+            <form class="add-form log" action="/login" method="POST">
+            <div class="form-group">
+                <label> Email:
+                    <input class="form-control" type="email" name="email">
+                </label>
+            </div>
+            <div class="form-group">
+                <label> Password:
+                    <input class="form-control" type="password" name="userPassword">
+                </label>
+            </div>
+            <button class="btn" type="submit">Login</button>
 
-</form>
+            <br />
+            {{#if errorMessage}}
+            <i style="background-color: red;">*{{errorMessage}}</i>
+            {{/if}}
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,14 +1,16 @@
-<h2>Choose Folder(s) for Bookmark</h2>
 
-{{!-- not right way at all... maybe links then can add but thats alot to go through to add to one folder at a time... way to pick multiple folders to put resource in --}}
+<center>
+<h3 class="head"><u>Choose Folder(s) for Bookmark: </u></h3>
+</center>
+<br>
+<center><h4 class="head">{{foundRes.lang}}{{#if foundRes.title}}: {{foundRes.title}}{{/if}}</h4></center>
 
-<h4>{{foundRes.lang}}: {{foundRes.title}}</h4>
 <hr>
 
  <label for="foldersLabel"><h4><u>FOLDERS</u></h4></label>
   <div class="list-box">
     {{#each foldersFromDB}}
-    <h5>{{this.name}} <button class="blue-btn"><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}} remove {{else}} add {{/if}}</a></button></h5>
+    <button class="btn  {{#if folderSelected}}red-btn {{else}} blue-btn{{/if}}"><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}}remove{{else}} add {{/if}}</a></button> <h5>{{this.name}} </h5>
     {{/each}}
   </div>
   <br>

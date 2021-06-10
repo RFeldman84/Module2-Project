@@ -1,5 +1,6 @@
+
+<center><h2 class="head"><u>GitHub Users</u></h2>
 <br>
-<center><h2><u>GitHub Users</u></h2>
   {{!-- add new user--}}
   <form action="/dev/github-users" method="POST">
     <div class="form-group">
@@ -16,10 +17,9 @@
 
 
 
-
 <div class="card-deck">
 {{#each gitUsersDB}}
- <div class="card " style="border:none">
+<div class="card " style="border:none">
     <form action="/{{id}}/delete" method="POST">
     <button class="none-btn"><img height="25" src="/images/delete.png" alt="delete"></button>
     </form>
@@ -31,7 +31,4 @@
 
 
 
-
- 
-      
 

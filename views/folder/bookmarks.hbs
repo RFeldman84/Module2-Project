@@ -1,8 +1,9 @@
-<br>
-<hr>
-<h2 class="text-center"><u>BOOKMARKS</u></h2>
 
-<hr>
+
+<center> <h1 class="text-center head"><u>BOOKMARKS & FOLDERS</u></h1></center>
+<br>
+<br>
+<hr class="hr-bm">
 <div>
   {{!-- add new folder --}}
 
@@ -43,7 +44,7 @@
           </div>
         </a>
       </div>
-      <div class="bottomCard card-header py-0 px-0 my-0 mx-0">
+      <div class="bottomCard card-header folder py-0 px-0 my-0 mx-0">
         {{!-- edit folder --}}
         <button class="none-btn editF"><img height="15" src="/images/edit.png" alt="edit button"></a></button>
         {{!-- delete folder --}}
@@ -143,8 +144,8 @@
         </div>
         </div>
         <div class="card-body">
-          <object type="image/svg+xml"
-            data="https://gh-card.dev/repos/{{gitRepo}}.svg?fullname=&link_target=_blank"></object>
+          <div class="github-card" data-github="{{gitRepo}}" data-width="400" data-height="153" data-theme="default"></div>
+          {{!-- <object type="image/svg+xml" data="https://gh-card.dev/repos/{{gitRepo}}.svg?fullname=&link_target=_blank"></object> --}}
         </div>
         <p class="card-text text-center">{{description}}</p>
 
