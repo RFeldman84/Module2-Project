@@ -93,10 +93,9 @@ router.post("/newPic/add", routeGuard, fileUploader.single("image"),(req, res) =
 	});
 
 
-// for some reason rest wont work without fileUploader.single("image") so leave in
 // //POST VIDEO
 
-router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => {
+router.post("/newVid/add",routeGuard,(req, res) => {
 	
 	const { lang, topic, title, description, urlType, resType } = req.body
 
@@ -109,11 +108,9 @@ router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => 
 		return res.render("dev/new-vid", {errorMessage: true, ...req.body})
 		}else if (!req.body.vidUrl) {
 		return res.render("dev/new-vid", {errorUrl: urlE, ...req.body});
-		}
-		
-		if (!regexYt.test(req.body.vidUrl) || (!req.body.vidUrl.indexOf("http://") == 0 && !req.body.vidUrl.indexOf("https://") == 0)){
-			res.render("dev/new-vid", {errorUrl: urlInvalid +` for Youtube`, ...req.body});
-			return;
+		}else if (!regexYt.test(req.body.vidUrl) || (!req.body.vidUrl.indexOf("http://") == 0 && !req.body.vidUrl.indexOf("https://") == 0)){
+			return res.render("dev/new-vid", {errorUrl: urlInvalid +` for Youtube`, ...req.body})
+		;
 		}
 
 
@@ -127,17 +124,17 @@ router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => 
 
 
 // //POST WEBLINK
-router.post("/newLink/add",routeGuard,fileUploader.single("image"),(req, res) => {
+router.post("/newLink/add",routeGuard,(req, res) => {
 
 	const { lang, topic, title, description, webUrl, urlType, resType } = req.body
 
 	if (!lang || !title ) {
 		return res.render("dev/new-link", {errorMessage: true, ...req.body});
-	 } else if (!webUrl) {
+	} else if (!webUrl) {
 		return res.render("dev/new-link", {errorUrl: urlE, ...req.body});
-	 } else if(webUrl.indexOf("http://") !== 0 && webUrl.indexOf("https://") !== 0){
-		 return res.render("dev/new-link", {errorUrl: urlInvalid, ...req.body});
-	 }
+	} else if(webUrl.indexOf("http://") !== 0 && webUrl.indexOf("https://") !== 0){
+		return res.render("dev/new-link", {errorUrl: urlInvalid, ...req.body});
+	}
 
 	
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, webUrl})
@@ -150,7 +147,7 @@ router.post("/newLink/add",routeGuard,fileUploader.single("image"),(req, res) =>
 
 
 // //POST GIT REPO
-router.post("/newGitRepo/add",routeGuard,fileUploader.single("image"),(req, res) => {
+router.post("/newGitRepo/add",routeGuard,(req, res) => {
 
 	const { lang, description, gitRepo, urlType, resType } = req.body
 		if (!lang || (!lang && !gitRepo)) {

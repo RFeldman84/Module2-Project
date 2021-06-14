@@ -88,9 +88,6 @@ router.post("/newPic/add", routeGuard, fileUploader.single("image"),(req, res) =
 	// }
 
 
-
-
-// for some reason rest wont work without fileUploader.single("image") so leave in
 // //POST WEBLINK
 router.post("/newLink/add",routeGuard,(req, res) => {
 	// console.log('body', req.body)
@@ -99,11 +96,11 @@ router.post("/newLink/add",routeGuard,(req, res) => {
  
 	if (!lang || !title ) {
 		return res.render("code/new-link", {errorMessage: true, ...req.body});
-	 } else if (!webUrl) {
+	} else if (!webUrl) {
 		return res.render("code/new-link", {errorUrl: urlE, ...req.body});
-	 } else if(webUrl.indexOf("http://") !== 0 && webUrl.indexOf("https://") !== 0){
-		 return res.render("code/new-link", {errorUrl: urlInvalid, ...req.body});
-	 }
+	} else if(webUrl.indexOf("http://") !== 0 && webUrl.indexOf("https://") !== 0){
+		return res.render("code/new-link", {errorUrl: urlInvalid, ...req.body});
+	}
 
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, webUrl})
 	.then(() => {
@@ -117,12 +114,12 @@ router.post("/newLink/add",routeGuard,(req, res) => {
 
 //POST VIDEO
 
-router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => {
+router.post("/newVid/add",routeGuard,(req, res) => {
 
 	const { lang, topic, title, description, urlType, resType } = req.body
 
 	const regexYt = /^(http(s)??\:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([a-zA-Z0-9\-_])+/
-	
+
   const urlYe = req.body.vidUrl.replace(".be/", "be.com/embed/").replace('watch?v=',"embed/")
 
 
@@ -148,7 +145,7 @@ router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => 
 
 
 //POST CODE PEN
-router.post("/newPen/add",routeGuard,fileUploader.single("image"),(req, res) => {
+router.post("/newPen/add",routeGuard,(req, res) => {
 	const { lang, topic, title, description, urlType, resType } = req.body
 
 	
@@ -173,7 +170,7 @@ router.post("/newPen/add",routeGuard,fileUploader.single("image"),(req, res) => 
 
 //POST REPLiT
 
-router.post("/newReplit/add",routeGuard,fileUploader.single("image"),(req, res) => {
+router.post("/newReplit/add",routeGuard,(req, res) => {
 
 	const { lang, topic, title, description, urlType, resType } = req.body
 
