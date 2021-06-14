@@ -1,19 +1,20 @@
 
 <center>
-<h3 class="head"><u>Choose Folder(s) for Bookmark: </u></h3>
+<h1 class="head"><u>Choose Folder(s) for Bookmark: </u></h1>
 </center>
 <br>
-<center><h4 class="head">{{foundRes.lang}}{{#if foundRes.title}}: {{foundRes.title}}{{/if}}</h4></center>
+<center><h4 class="fold4">{{foundRes.lang}}{{#if foundRes.title}}: {{foundRes.title}}{{/if}}</h4></center>
 
 <hr>
 
- <label for="foldersLabel"><h4><u>FOLDERS</u></h4></label>
-  <div class="list-box">
+
+  <div class="folders-container">
     {{#each foldersFromDB}}
-    <button class="btn  {{#if folderSelected}}red-btn {{else}} blue-btn{{/if}}"><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}}remove{{else}} add {{/if}}</a></button> <h5>{{this.name}} </h5>
+    <div class="folders-item">
+    <button class="btn  {{#if folderSelected}}red-btn {{else}} blue-btn{{/if}}"><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}}remove{{else}} add {{/if}}</a></button> <h5 class="fold5">{{this.name}} </h5>  {{#if folderSelected}}<i  class="far fa-check-square"></i> {{else}} <div></div> {{/if}} 
+    </div>
     {{/each}}
   </div>
-  <br>
-
+<br>
 
   <h6><a style="background-color: #1B1395 " href="/bookmarks">Back</h6></a>

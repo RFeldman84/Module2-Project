@@ -101,19 +101,20 @@ router.post("/newVid/add",routeGuard,fileUploader.single("image"),(req, res) => 
 	const { lang, topic, title, description, urlType, resType } = req.body
 
 	const regexYt = /^(http(s)??\:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([a-zA-Z0-9\-_])+/
+	
   const urlYe = req.body.vidUrl.replace(".be/", "be.com/embed/").replace('watch?v=',"embed/")
 
 
 	if (!lang || !title ) {
-  return res.render("dev/new-vid", {errorMessage: true, ...req.body})
-  }else if (!req.body.vidUrl) {
-	return res.render("dev/new-vid", {errorUrl: urlE, ...req.body});
-  }
-	
-	if (!regexYt.test(req.body.vidUrl) || (!req.body.vidUrl.indexOf("http://") == 0 && !req.body.vidUrl.indexOf("https://") == 0)){
-		res.render("dev/new-vid", {errorUrl: urlInvalid +` for Youtube`, ...req.body});
-		return;
-	}
+		return res.render("dev/new-vid", {errorMessage: true, ...req.body})
+		}else if (!req.body.vidUrl) {
+		return res.render("dev/new-vid", {errorUrl: urlE, ...req.body});
+		}
+		
+		if (!regexYt.test(req.body.vidUrl) || (!req.body.vidUrl.indexOf("http://") == 0 && !req.body.vidUrl.indexOf("https://") == 0)){
+			res.render("dev/new-vid", {errorUrl: urlInvalid +` for Youtube`, ...req.body});
+			return;
+		}
 
 
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, vidUrl:urlYe})

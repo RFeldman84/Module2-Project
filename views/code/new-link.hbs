@@ -7,20 +7,20 @@
 
     <div class="row form-row">
       <div class="col-md-12">
-      <form  class="add-form" action="/languages/newLink/add" method="POST" enctype="multipart/form-data">
+      <form  class="add-form" action="/languages/newLink/add" method="POST">
           <div class="form-group">
             <label> Main Language: 
             {{#if errorMessage}}
             <i style="color: red">**required</i>
             {{else}} <i>*required</i>
             {{/if}}
-              <input class="form-control" type="text" name="lang" placeholder="javascript HTML css python C shell SQL Go ruby"  value="{{lang}}">
+              <input class="form-control" type="text" name="lang" placeholder="javascript HTML css python C shell SQL Go ruby" value="{{lang}}"/>
             </label>
           </div>
           <div class="form-group">
             <label> Language Topic/Library/"Sub-Language":
               <input type="text" name="topic" class="form-control"
-                placeholder="math filter bootstrap boost react jquery Django " value="{{topic}}">
+                placeholder="math filter bootstrap boost react jquery Django" value="{{topic}}" >
             </label>
           </div>
           <div class="form-group">

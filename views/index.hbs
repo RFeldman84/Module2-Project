@@ -2,42 +2,36 @@
 <div id="home">
 
 <section>
-<h4><i class="openState"> Hey {{#if userInSession}}<b>{{userInSession.username}}</b>{{else}} Developers{{/if}}! You searched hard g👀gled it.. don't risk losing it... now you can....</i></h4>
+<h4><i class="openState"> Hey {{#if userInSession}}<b class="caps">{{userInSession.username}}</b>{{else}} Developers{{/if}}! You searched hard g👀gled it.. don't risk losing it... now you can....</i></h4>
 <br>
 <br>
 <center><img id="logoMain"  src="/images/yougleit.png" alt="logo"></center>
 </section>
-
+<br>
 <section>
-    <center><h6 class="home-head">Why get lost in a sea of searches, browser bookmarks & files in folders all over your computer? <br> Store & search your favorite web resources & pix in one spot for your programming project needs.</h6></center>
-
+    <center><h6 class="home-head caps">Why get lost in a sea of searches, browser bookmarks & files in folders all over your computer? <br> Store & search your favorite web resources & pix in one spot for your programming project needs.</h6></center>
+ </section>
 
     <section class="flex-home-bottom" >
         <div class="home-bottom-item">
             <button style="margin-bottom: 1vw;" type="button" class="btn btn-danger red-btn dropdown-toggle-split">+</button>
             <h5>Add</h5>
-            <p><i> Clearly personalize labels to your resources to clearly know whats what!?! Add Pix, Weblinks, Github repos & users with embedded Youtube videos, Codepens & Replit's</i> </p>
+            <p><i> Clearly personalize labels to your resources to clearly know whats what!?! Add Pix, Weblinks, Github repos & users with embedded <br>Youtube videos, Codepens & Replit's</i> </p>
         </div>
-
-        {{!-- <div class="home-bottom-item">
-            <img src="/images/search.png" alt="search image">
-            <h5><u>Resource Types</u></h5>
-            <p> somthing about cards and codewars/gituser feature buttons .... your completed katas ready to open in tabs... with youtube videos, codepens & replit's embedded to reference straight from site ...or ya ...open too.</p>
-        </div> --}}
 
         <div class="home-bottom-item">
             <img src="/images/search.png" alt="search image">
             <h5>Search</h5>
-            <p><i> Personalized labels = You can see it, you can search with it! <br> Or use "weblink" "picture" "video" "codepen" "replit" "github" for all of a specific kind </i></p>
+            <p><i> Personalized labels = You can read it, you can search with it! <br> Or search "weblink" "picture" "video" "codepen" "replit" "github" <br>to see all of a specific kind </i></p>
         </div>
 
         <div class="home-bottom-item">
             <img src="/images/bookmarked.png" alt="bookmark image">
             <h5>Bookmarks & Folders</h5>
-            <p><i> Bookmark resources relevant to your current projects & must haves in one place. <br> Create folders for further convenience</i></p>
+            <p><i> Bookmark resources relevant to your current projects & must haves <br>in one place. <br> Create folders! <br> for further convenience</i></p>
         </div>
 
-        </section>
+        {{!-- </section> --}}
     </section>
 </div>
 
