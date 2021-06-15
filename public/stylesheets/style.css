@@ -40,6 +40,17 @@ hr{
 	color:#1B1395;
 }
 
+
+
+.red-txt{
+	color: #951B13;
+}
+
+.caps{
+	text-transform: uppercase;
+}
+
+/* buttons */
 .red-btn{
 	background-color: #951B13;
 	color: white;
@@ -65,6 +76,16 @@ hr{
 	background: none;
 }
 
+.none-btn img:active{
+	zoom: 1.1;
+}
+
+
+/* #1B1395 */
+/*#951B13*/
+/* #13951B*/
+
+/* headers */
 .head{
 	background-color: #13951B;
 	color: #1B1395;
@@ -75,18 +96,6 @@ hr{
   padding: 0px 40px;
   margin: 0;
 }
-
-.red-txt{
-	color: #951B13;
-}
-
-.caps{
-	text-transform: uppercase;
-}
-
-/* #1B1395 */
-/*#951B13*/
-/* #13951B*/
 
 /* NAV */
 nav {
@@ -242,7 +251,7 @@ nav {
 .resImg:hover {
 	transition: transform 0.2s; 
 	margin: 0 auto;
-	transform: scale(1.8); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+	transform: scale(1.6); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 	z-index: 2;
 }
 
@@ -298,6 +307,7 @@ margin-top: 4em;
 /* #1B1395 */
 /*#951B13*/
 /* #13951B*/
+/* #1c13951e */
 
 .form-page{
 	display: flex;
@@ -379,17 +389,24 @@ height: 15vw;
 	align-items: center;
 }
 
-/* codewars */
+/* code wars */
 .cw-container{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	align-items: ;
 }
 
 .cw{
 	border: #13951B 2px solid;
-	padding: 5px;
+	padding: 8px;
 	margin: 5px;
 	border-radius: 5px;
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	background-color: #1c13951e;
 }
+
