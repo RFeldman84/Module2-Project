@@ -49,7 +49,7 @@ router.post("/signup", (req, res, next) => {
         passwordHash: hashedPassword
       }).then((userFromDB) => {
         // console.log(userFromDB);
-        res.redirect("/");
+        res.redirect("/auth/login");
       });
     })
     .catch((err) => {
@@ -94,7 +94,7 @@ router.post("/login", (req, res, next) => {
       console.log("logged in user is: ", responseFromDB);
         // currentUser ==> this is a placeholder
         req.session.currentUser = responseFromDB;
-         console.log("do i have user in session: ", req.session.currentUser);
+        console.log("do i have user in session: ", req.session.currentUser);
         res.redirect("/");
       } else {
         res.render("auth/login.hbs", { errorMessage: "Incorrect password." });
