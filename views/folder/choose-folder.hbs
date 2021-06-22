@@ -1,17 +1,17 @@
 
 <center>
-<h1 class="head"><u>Choose Folder(s) for Bookmark: </u></h1>
+<h2 class="head" style="color: black;">Choose Folder(s) for Bookmark: </h2>
 </center>
+{{!-- <br> --}}
+<center><h2 class="head" >{{foundRes.lang}}{{#if foundRes.title}}: {{foundRes.title}}{{/if}}</h2></center>
 <br>
-<center><h4 class="fold4">{{foundRes.lang}}{{#if foundRes.title}}: {{foundRes.title}}{{/if}}</h4></center>
-
 <hr>
 
 
   <div class="folders-container">
     {{#each foldersFromDB}}
     <div class="folders-item">
-    <button class="btn  {{#if folderSelected}}red-btn {{else}} blue-btn{{/if}}"><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}}remove{{else}} add {{/if}}</a></button> <h5 class="fold5">{{this.name}} </h5>  {{#if folderSelected}}<i  class="far fa-check-square"></i> {{else}} <div></div> {{/if}} 
+    <button class="btn  {{#if folderSelected}}red-btn {{else}} blue-btn{{/if}}"><a href="/bookmarks/addRemove/{{this._id}}/{{../foundRes._id}}">{{#if folderSelected}}remove{{else}} add {{/if}}</a></button> <h4 class="folds">{{this.name}} </h4>  {{#if folderSelected}}<i  class="far fa-check-square"></i> {{else}} <div></div> {{/if}} 
     </div>
     {{/each}}
   </div>

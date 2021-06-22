@@ -9,7 +9,7 @@ const codeSchema = new Schema(
 		lang: { type: String, uppercase: true, trim: true},
 		topic: { type: String, trim: true },
 		title: { type: String, trim: true },
-		description: { type: String},
+		description: { type: String, trim: true },
 		webUrl: { type: String, trim: true},
 		imageUrl: { type: String, trim: true},
 		vidUrl: { type: String, trim: true},
