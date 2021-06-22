@@ -188,8 +188,9 @@ router.post("/newReplit/add",routeGuard,(req, res) => {
 	}
 
 
-	//url.split('#')[0]
-	let riFix = req.body.riUrl.split('#')[0]
+	//url.split('#')[0]  ?v=1  / /   .split(/\?v=1$|#/)[0]
+	// let riFix = req.body.riUrl.split('#')[0]
+	let riFix = req.body.riUrl.split(/\?v=1$|#/)[0]
 	
 	Code.create({userId: req.session.currentUser, lang, topic, title, description, urlType, resType, riUrl: riFix})
 		.then(() => res.redirect("/languages"))

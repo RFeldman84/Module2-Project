@@ -1,64 +1,64 @@
-
-
-<center> <h1 class="text-center head"><u>BOOKMARKS & FOLDERS</u></h1></center>
 <br>
-<br>
-<hr class="hr-bm">
-<div>
-  {{!-- add new folder --}}
+  <br>
+  <center> <h1 style="color:black; border: 1px black solid;" class="text-center  head font-2">BOOKMARKS <br> & <br>FOLDERS</h1></center>
+  <br>
+  <br>
+  <hr class="hr-bm">
+  <div>
+    {{!-- add new folder --}}
 
-  <div class="row">
-    <div class="col-md-6">
-      <form action="/bookmarks/new-folder" method="POST">
-        <div class="form-group">
-          <input required class="form-control-sm" type="text" name="name" placeholder="enter new folder name">
-          <button type="submit"  class="btn blue-btn btn-primary fas fa-folder-plus"></button>
-          {{#if errorMessage}}
-          <i style="color: red">*{{errorMessage}}</i>
-          {{/if}}
-      </form>
-    </div>
-  </div>
-
-
-  {{!-- display folders --}}
-  <div class="row row-cols-3  row-cols-md-6">
-    {{#each foldersDB}}
-    <div class="col mb-1">
-      {{!-- display edit name above... --}}
-      <div>
-        <form class="hide upF"  action="/bookmarks/folder/{{id}}/edit" method="post" class="form-inline row">
-          <div class="form-group ">
-            <input type="text" name="name" class="form-control form-control-sm" placeholder="...new name" required>
-            <button type="submit" class="form-control btn btn-sm btn-primary blue-btn">update</button>
-          </div>
-        </form>
-      </div>
-
-      {{!-- display folders continued --}}
-      <div class="card" style="border: none;">
-        <a href="bookmarks/folder/{{_id}}"><img src="/images/blue-folder.png" class="card-img-top"
-            alt="folder image">
-          <div class="card-img-overlay ">
-            <h5 class="card-title folderTxt">{{name}}</h5>
-          </div>
-        </a>
-      </div>
-      <div class="bottomCard card-header folder py-0 px-0 my-0 mx-0">
-        {{!-- edit folder --}}
-        <button class="none-btn editF"><img height="15" src="/images/edit.png" alt="edit button"></a></button>
-        {{!-- delete folder --}}
-        <form action="/bookmarks/folder/{{id}}/delete" method="post">
-          <button class="none-btn"><img height="15" src="/images/delete.png" alt="delete"></button>
+    <div class="row">
+      <div class="col-md-6">
+        <form action="/bookmarks/new-folder" method="POST">
+          <div class="form-group">
+            <input required class="form-control-sm" type="text" name="name" placeholder="enter new folder name">
+            <button type="submit"  class="btn blue-btn btn-primary fas fa-folder-plus"></button>
+            {{#if errorMessage}}
+            <i style="color: red">*{{errorMessage}}</i>
+            {{/if}}
         </form>
       </div>
     </div>
-    {{/each}}
-  </div>
-</div>
 
-<hr>
-<br>
+
+    {{!-- display folders --}}
+    <div class="row row-cols-3  row-cols-md-6">
+      {{#each foldersDB}}
+      <div class="col mb-1">
+        {{!-- display edit name above... --}}
+        <div>
+          <form class="hide upF"  action="/bookmarks/folder/{{id}}/edit" method="post" class="form-inline row">
+            <div class="form-group ">
+              <input type="text" name="name" class="form-control form-control-sm" placeholder="...new name" required>
+              <button type="submit" class="form-control btn btn-sm btn-primary blue-btn">update</button>
+            </div>
+          </form>
+        </div>
+
+        {{!-- display folders continued --}}
+        <div class="card" style="border: none;">
+          <a href="bookmarks/folder/{{_id}}"><img src="/images/blue-folder.png" class="card-img-top"
+              alt="folder image">
+            <div class="card-img-overlay ">
+              <h5 class="card-title folderTxt">{{name}}</h5>
+            </div>
+          </a>
+        </div>
+        <div class="bottomCard card-header folder py-0 px-0 my-0 mx-0">
+          {{!-- edit folder --}}
+          <button class="none-btn editF"><img height="15" src="/images/edit.png" alt="edit button"></a></button>
+          {{!-- delete folder --}}
+          <form action="/bookmarks/folder/{{id}}/delete" method="post">
+            <button class="none-btn"><img height="15" src="/images/delete.png" alt="delete"></button>
+          </form>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <hr>
+  <br>
 
 {{!-- ////////////////////////// --}}
 
