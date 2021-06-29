@@ -191,8 +191,8 @@ nav {
 
 .flex-home-bottom{
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: flex-start;
 	text-align: center;
 }
 
