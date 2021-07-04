@@ -126,7 +126,7 @@ router.get('/bookmarks/addRemove/:folderId/:resId', routeGuard, (req, res, next)
 // // get for  BOOKMARKS in a folder
 
 router.get('/bookmarks/folder/:folderId',  routeGuard, (req, res, next) => {
-  Folder.findById(req.params.folderId).populate('resources')
+  Folder.findById(req.params.folderId).populate({path:'resources',options:{ sort:{updatedAt: -1 }}})
   .then((foundFolder) => {
     console.log("found folder: ", foundFolder);
 			// logic if remove bookmark:resource.fav === "no" - pull() that resource
