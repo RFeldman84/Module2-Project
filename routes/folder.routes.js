@@ -128,18 +128,27 @@ router.get('/bookmarks/addRemove/:folderId/:resId', routeGuard, (req, res, next)
 router.get('/bookmarks/folder/:folderId',  routeGuard, (req, res, next) => {
   Folder.findById(req.params.folderId).populate({path:'resources',options:{ sort:{updatedAt: -1 }}})
   .then((foundFolder) => {
-    console.log("found folder: ", foundFolder);
+		const isNo = 	foundFolder.resources.filter(resource => resource.fav == "no").length > 0
 			// logic if remove bookmark:resource.fav === "no" - pull() that resource
-			foundFolder.resources.forEach(resource => {
+			if(isNo){
+				console.log("no in folder: ", foundFolder.name, "res#: ", foundFolder.resources.length);
+				foundFolder.resources.forEach(resource => {
 				if(resource.fav == "no")
 				foundFolder.resources.pull(resource._id)
-				foundFolder.save()
 			})
-			console.log('updated res', foundFolder)
-    res.render("folder/folder.hbs", {foundFolder});
+			foundFolder.save()
+			console.log("updated folder: ", foundFolder.name, "res#: ", foundFolder.resources.length);
+			res.render("folder/folder.hbs", {foundFolder});
+			} else {
+				console.log("found folder: ", foundFolder.name, "res#: ", foundFolder.resources.length);
+				res.render("folder/folder.hbs", {foundFolder});
+			}
+			
     })
   .catch((err) => console.log(`Error while getting folder from DB  ${err}`));
 })
+
+
 
 
 
