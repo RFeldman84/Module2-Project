@@ -25,7 +25,8 @@ router.post('/:id/delete', routeGuard, (req, res, next) => {
 
 
 // /// UPDATE  for lang dev bookmark////
-
+const urlInvalid = "please enter valid url including http/https"
+const regexYt = /^(http(s)??\:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([a-zA-Z0-9\-_])+/
 // // GET
 router.get('/:id/edit', routeGuard, (req, res, next) => {
   Code.findById(req.params.id)
@@ -47,8 +48,29 @@ router.get('/:id/edit', routeGuard, (req, res, next) => {
   
 // //POST
 router.post('/:id/edit', routeGuard, (req, res, next) => {
-	const { lang, topic, title, description,referer} = req.body
-  Code.findByIdAndUpdate(req.params.id, { lang, topic, title, description, referer}, { new: true })
+	//  const { lang, topic, title, description,referer} = req.body
+  console.log("reqbody " ,req.body)
+
+  if((req.body.resType === "code" && req.body.webUrl)&&(req.body.webUrl.indexOf("http://") !== 0 && req.body.webUrl.indexOf("https://") !== 0)){
+      Code.findById(req.params.id)
+      .then((foundCode) => {
+      console.log("found code2 : ", foundCode);
+      res.render("code/update-form", {foundCode, errorUrl: urlInvalid, ...req.body})
+      })
+  return
+  }
+
+  if((req.body.resType === "dev" && req.body.webUrl)&&(req.body.webUrl.indexOf("http://") !== 0 && req.body.webUrl.indexOf("https://") !== 0)){
+      Code.findById(req.params.id)
+      .then((foundCode) => {
+      console.log("found code2 dev: ", foundCode);
+      res.render("dev/update-form", {foundCode, errorUrl: urlInvalid, ...req.body})
+      })
+  return
+  }
+
+
+  Code.findByIdAndUpdate(req.params.id, { ...req.body}, { new: true })
     .then((updatedCode) => {
       console.log("updated:", updatedCode);
       res.redirect(req.body.referer)

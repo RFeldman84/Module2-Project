@@ -46,7 +46,7 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 hbs.registerPartials(__dirname + "/views/partials")
 
 // default value for title local
-app.locals.titlePage = "YouGle It!";
+app.locals.titlePage = "YOUgle it!";
 
 // const index = require('./routes/index');
 // app.use('/', index);

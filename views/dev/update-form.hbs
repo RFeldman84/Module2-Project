@@ -1,5 +1,5 @@
 
-<center><h3 class="head"><span class="red-txt">EDIT</span> Development Resource</h3></center>
+<center><h3 class="head"><span class="red-txt"><u>EDIT</u></span> Development Resource</h3></center>
 <div class="form-page">
   <div class="form-icon-flex">  
     {{#if foundCode.vidUrl}}
@@ -14,8 +14,9 @@
 
     <div class="row form-row">
       <div class="col-md-12">
-        <h5 class="text-center">{{foundCode.lang}}: {{foundCode.title}}</h5>
         <form class="add-form" action="/{{foundCode.id}}/edit" method="POST">
+        <h5 class="text-center head"><span class="red-txt">{{foundCode.lang}}: {{foundCode.title}}</span></h5>
+        <br>
           <div class="form-group">
             <label> Main Topic:
               <input required class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
@@ -33,12 +34,21 @@
           </div>
           <div class="form-group">
             <label> Description/Keywords/#hashtags:
-              <textarea class="form-control" name="description" cols="30" rows="4">{{foundCode.description}}</textarea>
+              <textarea class="form-control" name="description" cols="3" rows="3">{{foundCode.description}}</textarea>
             </label>
           </div>
           <div class="form-group">
-          <input type="hidden" name="referer" value="{{referer}}">
+          {{#if foundCode.webUrl}}
+            <label> Webpage Url:   
+              <input class="form-control" type="text" name="webUrl"  value="{{foundCode.webUrl}}">
+            </label>
+            {{#if errorUrl}}
+            <i style="color: red">*{{errorUrl}}</i>
+            {{/if}}
+          {{/if}}
           </div>
+          <input type="hidden" name="resType" value="dev">
+          <input type="hidden" name="referer" value="{{referer}}">
           <button type="submit" class="btn btn-primary">UPDATE</button>
       </div>
     </div>

@@ -1,13 +1,14 @@
 
-<center><h3 class="head"><span class="red-txt">EDIT</span> Github Repository Resource</h3></center>
+<center><h3 class="head"><span class="red-txt"><u>EDIT</u></span> Github Repository</h3></center>
 <div class="form-page">
   <div class="form-icon-flex">  
     
     <img class="form-icon" src="/images/github-logo.png" alt="github icon">
     <div class="row form-row">
       <div class="col-md-12">
-        <h5 class="text-center">{{foundCode.gitRepo}}</h5>
         <form class="add-form" action="/{{foundCode.id}}/edit" method="POST">
+        <h5 class="text-center head"><span class="red-txt">{{foundCode.gitRepo}}</span></h5>
+        <br>
           <div class="form-group">
             <label> Repo Topic:
               <input required class="form-control" type="text" name="lang" value="{{foundCode.lang}}">
@@ -19,8 +20,11 @@
             </label>
           </div>
           <div class="form-group">
-          <input type="hidden" name="referer" value="{{referer}}">
+            <label> Repository:
+              <input class="form-control" type="text" name="gitRepo" required placeholder="<USERNAME>/<REPO>" value="{{foundCode.gitRepo}}">
+            </label>
           </div>
+          <input type="hidden" name="referer" value="{{referer}}">
           <button type="submit" class="btn btn-primary">UPDATE</button>
       </div>
     </div>
