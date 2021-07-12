@@ -48,7 +48,7 @@
           <div class="form-group">
           {{#if foundCode.webUrl}}
             <label> Webpage Url:   
-              <input class="form-control" type="text" name="webUrl"  value="{{foundCode.webUrl}}">
+              <input class="form-control" type="text" name="webUrl"  required value="{{foundCode.webUrl}}">
             </label>
             {{#if errorUrl}}
             <i style="color: red">*{{errorUrl}}</i>
